@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="A proposal to pave our shared dirt road off Hempel Ave in concrete, with before and after photos, a cost split and a maintenance plan.">
+<meta name="robots" content="noindex">
+<title>Our Shared Driveway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+:root{
+  --ground:#F2F3EF; --panel:#FFFFFF; --ink:#1D221E; --muted:#5B635C; --line:#D6D9D2;
+  --oak:#3E6A3A; --oak-ink:#FFFFFF; --sand:#CDB98E; --concrete:#B9BCB5;
+  --h1830:#3E6A3A; --h1922:#356D8F; --h1820:#B07A1E; --h1930:#A4513B; --lot-other:#E3E5DF; --road1:#D9D5C9; --road4:#6F6A5E;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#141714; --panel:#1C201C; --ink:#E6E9E2; --muted:#9CA59C; --line:#2F352F;
+    --oak:#7FB276; --oak-ink:#0F1A0E; --sand:#BFA878; --concrete:#8E928B;
+    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F; --lot-other:#252A25; --road1:#4A473F; --road4:#B5AE9C;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#141714; --panel:#1C201C; --ink:#E6E9E2; --muted:#9CA59C; --line:#2F352F;
+  --oak:#7FB276; --oak-ink:#0F1A0E; --sand:#BFA878; --concrete:#8E928B;
+    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F; --lot-other:#252A25; --road1:#4A473F; --road4:#B5AE9C;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 64px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);text-transform:uppercase}
+h2{font-size:clamp(1.8rem,4vw,2.4rem);text-transform:uppercase}
+h3{font-size:1.45rem;font-weight:600}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.95rem;color:var(--oak)}
+header{display:grid;gap:16px}
+.lede{font-size:1.15rem;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.92rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.sw.dirt{background:var(--sand)} .sw.conc{background:var(--concrete)}
+
+/* comparison slider */
+.cmp{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--line);user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.cmp .before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.cmp .divider{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
+.cmp .knob{position:absolute;top:50%;left:var(--pos,50%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);display:grid;place-items:center;pointer-events:none}
+.cmp .knob svg{width:26px;height:26px}
+.cmp .tag{position:absolute;bottom:12px;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;padding:4px 10px;border-radius:3px;color:#fff;background:rgba(20,24,20,.62);pointer-events:none;transition:opacity .2s}
+.cmp .tag.l{left:12px} .cmp .tag.r{right:12px}
+.cmp input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
+.cmp:has(input:focus-visible){outline:3px solid var(--oak);outline-offset:3px}
+
+.view{display:grid;gap:14px}
+.view-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.view-head .n{font-family:var(--display);font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
+.view p{color:var(--muted)}
+.gallery{display:grid;gap:48px}
+.opts{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.opts button{font:600 .95rem var(--display);letter-spacing:.08em;text-transform:uppercase;border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:4px;cursor:pointer}
+.opts button[aria-pressed="true"]{background:var(--oak);color:var(--oak-ink)}
+.opts button:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
+
+.hint{font-size:.9rem;color:var(--muted)}
+
+/* why + split */
+.why{display:grid;gap:18px}
+.why ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px 32px}
+.why li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start}
+.why li::before{content:"";width:12px;height:12px;margin-top:7px;border-radius:2px;background:var(--oak)}
+.why li b{font-weight:600}
+.split{display:grid;gap:24px}
+.split-head{display:grid;gap:12px}
+.muted{color:var(--muted)}
+.plan{margin:0;display:grid;gap:8px}
+.plan-scroll{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px}
+.plan svg{display:block;width:100%;min-width:560px;height:auto}
+.plan figcaption{font-size:.85rem;color:var(--muted)}
+.plan .lot{stroke:var(--ink);stroke-width:1;stroke-opacity:.35}
+.plan .lbl{font-family:var(--display);font-weight:700;font-size:22px;fill:var(--ink)}
+.plan .sub{font-family:var(--body);font-size:12px;fill:var(--muted)}
+.plan .street{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;fill:var(--muted)}
+.plan .tick{font-family:var(--body);font-size:11px;fill:var(--muted)}
+.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.src{margin:0;display:grid;gap:8px;align-content:start}
+.src img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+.src figcaption{font-size:.88rem;color:var(--muted)}
+.src figcaption b{color:var(--ink);font-weight:600}
+.maint{display:grid;gap:24px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px 32px}
+.rule{display:grid;gap:6px;align-content:start;border-top:2px solid var(--line);padding-top:12px}
+.rule h3{font-size:1.3rem}
+.rule p{color:var(--muted)}
+.split-grid{display:grid;grid-template-columns:1fr;gap:28px}
+.controls{display:grid;gap:18px}
+.field{display:grid;gap:6px}
+.field label{font-size:.9rem;font-weight:600;color:var(--muted)}
+.field output{color:var(--ink);font-variant-numeric:tabular-nums}
+.field input:not([type=range]){font:500 1.1rem var(--body);font-variant-numeric:tabular-nums;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:10px 12px;width:100%}
+.field input[type=range]{width:100%;accent-color:var(--oak)}
+.field input:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
+.note{font-size:.88rem;color:var(--muted)}
+.controls h3{margin-bottom:-4px}
+.fields2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
+.totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.tot{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:4px}
+.tot.win{border-color:var(--oak)}
+.tot .k{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.tot .v{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.tot .s{font-size:.85rem;color:var(--muted)}
+.shares .save{color:var(--oak);font-weight:600}
+.shares tr.priv td{color:var(--muted);font-weight:500}
+.table-wrap{display:grid;gap:14px;min-width:0}
+.tscroll{overflow-x:auto}
+.shares{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.shares th{font:600 .8rem var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:0 8px 8px;border-bottom:1px solid var(--line)}
+.shares td{padding:12px 8px;border-bottom:1px solid var(--line)}
+.shares .num{text-align:right;white-space:nowrap}
+.shares tbody td:first-child{font-weight:600;white-space:nowrap}
+.shares .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+.shares .pct{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1}
+.shares tfoot td{font-weight:600;border-bottom:0;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%}
+.segs{font-size:.88rem;color:var(--muted);display:grid;gap:4px}
+.steps{display:grid;gap:18px}
+.steps ol{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px}
+.steps li{counter-increment:s;display:grid;gap:6px;border-top:2px solid var(--ink);padding-top:12px}
+.steps li::before{content:"Step " counter(s);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;color:var(--oak)}
+.steps li p{color:var(--muted)}
+footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:480px){.fields2{grid-template-columns:1fr}.wrap{padding-block:28px 48px;gap:44px}}
+@media (prefers-reduced-motion:reduce){.cmp .tag{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">A proposal for the four households on our road</div>
+    <h1>From sand to a solid driveway</h1>
+    <p class="lede">Our shared dirt road washes out, ruts up, and tracks sand into every car and garage. Here is what it could look like as a poured concrete driveway. Drag the slider on each photo to compare today with the finished version.</p>
+    <div class="legend">
+      <span><i class="sw dirt"></i>Left of the slider: the road today</span>
+      <span><i class="sw conc"></i>Right of the slider: concrete</span>
+    </div>
+  </header>
+
+  <section class="gallery" id="gallery" aria-label="Before and after photos"></section>
+
+  <section class="why">
+    <div class="eyebrow">Why do it together</div>
+    <h2>One pour, shared fairly</h2>
+    <ul>
+      <li><span><b>Cheaper per household.</b> One contractor mobilizing once for the full length costs less than separate jobs.</span></li>
+      <li><span><b>No more grading and washouts.</b> No regrading after heavy rain, no puddles, no ruts at the junctions.</span></li>
+      <li><span><b>Cleaner cars and homes.</b> Far less sand and dust coming in on tires and shoes.</span></li>
+      <li><span><b>Better access.</b> A firm surface for delivery trucks, emergency vehicles, strollers and bikes.</span></li>
+      <li><span><b>Property value.</b> A paved shared drive reads as finished and well kept to buyers.</span></li>
+    </ul>
+  </section>
+
+  <section class="split" aria-labelledby="split-h">
+    <div class="split-head">
+      <div class="eyebrow">Cost split</div>
+      <h2 id="split-h">You pay for the road you drive on</h2>
+      <p class="muted">The road is not used equally. 1830 and 1922 drive the full length from Hempel Ave. 1820 turns off partway down and 1930 turns off near the street. So each stretch of road is split evenly among the households that use it, and each household's share is the sum of its stretches.</p>
+    </div>
+
+    <figure class="plan">
+      <div class="plan-scroll"><svg id="plan" viewBox="-6 2 810 318" role="img" aria-label="Plan of the four parcels and the shared road, to scale"></svg></div>
+      <figcaption>Parcel lines to scale, from Orange County Property Appraiser data. North is up. Road shading gets darker where more households share it.</figcaption>
+    </figure>
+
+    <div class="sources">
+      <figure class="src">
+        <a href="img/survey-split.jpg" target="_blank" rel="noopener"><img src="img/survey-split.jpg" alt="Site plan from the 1830 Hempel survey with the road marked in yellow, red, green and purple sections" loading="lazy"></a>
+        <figcaption><b>Survey of 1830 Hempel, marked up.</b> Yellow: all four households. Red: 1820, 1830 and 1922. Green: 1830 and 1922. Purple: 1830 only. Section lengths are scaled from the surveyed 420.31 ft and 335.08 ft property lines.</figcaption>
+      </figure>
+      <figure class="src">
+        <a href="img/google-measure.jpg" target="_blank" rel="noopener"><img src="img/google-measure.jpg" alt="Google Maps aerial with a 335.35 ft measurement along the road from Hempel Ave" loading="lazy"></a>
+        <figcaption><b>Google Maps check.</b> Measured 335.35 ft from Hempel Ave to the end of the shared road. The survey says 335.08 ft, about 3 inches apart.</figcaption>
+      </figure>
+    </div>
+
+    <div class="split-grid">
+      <div class="controls">
+        <h3>Cost estimate</h3>
+        <div class="fields2">
+          <div class="field"><label for="rate">Concrete, per sq ft ($)</label><input id="rate" inputmode="decimal" value="11" autocomplete="off"></div>
+          <div class="field"><label for="fixed">Fixed job costs ($)</label><input id="fixed" inputmode="numeric" value="4,000" autocomplete="off"></div>
+          <div class="field"><label for="aShared">Shared road (sq ft)</label><input id="aShared" inputmode="numeric" value="4,200" autocomplete="off"></div>
+          <div class="field"><label for="aPriv">1830 driveway (sq ft)</label><input id="aPriv" inputmode="numeric" value="2,700" autocomplete="off"></div>
+        </div>
+        <p class="note"><b>These are estimates, not quotes.</b> $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
+        <p class="note">Shared road: 335 ft long by about 12 ft wide, plus the apron at Hempel. 1830 driveway: the loop, the spur to the road and the pad by the garage, scaled from the site plan.</p>
+        <p class="note">Fixed costs are split by square footage between the shared road and the 1830 driveway. The shared road's part is then split by road use. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
+      </div>
+      <div class="table-wrap">
+        <div class="totals" id="totals"></div>
+        <div class="tscroll"><table class="shares">
+          <thead><tr><th>Household</th><th class="num">Share</th><th class="num">Road only</th><th class="num">Whole job</th><th class="num">Saves</th></tr></thead>
+          <tbody id="shareRows"></tbody>
+          <tfoot id="shareFoot"></tfoot>
+        </table></div>
+        <div class="segs" id="segs"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="maint" aria-labelledby="maint-h">
+    <div class="split-head">
+      <div class="eyebrow">After the pour</div>
+      <h2 id="maint-h">Keeping it maintained</h2>
+      <p class="muted">A starting framework for a shared driveway maintenance agreement. Recorded with Orange County, it stays with each house if it sells, so the next owner is bound by the same terms.</p>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>Shared sections</h3><p>Repairs are split the same way as the pour. Yellow: all four. Red: 1820, 1830 and 1922. Green: 1830 and 1922.</p></div>
+      <div class="rule"><h3>Private sections</h3><p>Each household maintains its own driveway past the point where it leaves the shared road. The 1830 loop is 1830's alone.</p></div>
+      <div class="rule"><h3>Routine upkeep</h3><p>Sweeping, edging and trimming overhanging branches. Each household handles what borders its own lot, with no cost sharing.</p></div>
+      <div class="rule"><h3>Damage you cause, you fix</h3><p>If a household's dumpster, moving truck or contractor cracks a slab, that household pays for the repair.</p></div>
+      <div class="rule"><h3>Deciding on repairs</h3><p>Repairs under an agreed amount, such as $1,000, can go ahead. Larger ones need approval from households holding more than half the shares. Emergency fixes can be made right away.</p></div>
+      <div class="rule"><h3>Paying for it</h3><p>One neighbor coordinates quotes and invoices. Everyone pays their share within 30 days. An optional reserve of $100 to $200 per household a year avoids collecting each time.</p></div>
+      <div class="rule"><h3>Tree roots</h3><p>The live oaks along the road will eventually lift slabs. We should agree now whether root damage is shared or falls on the tree's owner, and ask bidders about root barriers.</p></div>
+      <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It sits in the yellow section, so all four share it.</p></div>
+      <div class="rule"><h3>Disagreements</h3><p>Try mediation before anything else. A real estate attorney drafts and records the final agreement, a small cost when split four ways.</p></div>
+    </div>
+    <p class="note">This is a framework to discuss, not legal advice. Existing deeds may already include a recorded easement or maintenance terms, so the attorney should check those first.</p>
+  </section>
+
+  <section class="steps">
+    <div class="eyebrow">How we get there</div>
+    <h2>Next steps</h2>
+    <ol>
+      <li><h3>Agree in principle</h3><p>Confirm all four households are interested in paving the shared road.</p></li>
+      <li><h3>Collect quotes</h3><p>Get at least three concrete contractor bids for the same scope and thickness.</p></li>
+      <li><h3>Settle the split</h3><p>Agree on the percentages and the maintenance terms, and record both in one agreement.</p></li>
+      <li><h3>Schedule the pour</h3><p>Pick a contractor and a date, and plan parking and access for the cure period.</p></li>
+    </ol>
+  </section>
+
+  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Parcel lines come from Orange County Property Appraiser data and are not a survey.</footer>
+</div>
+
+<script>
+const VIEWS=[
+  {id:"street",title:"Street entrance",text:"Where the road meets the street. A clean concrete apron instead of loose sand spilling onto the pavement."},
+  {id:"interior",title:"Interior road",text:"The straight run through the trees, paved edge to edge."},
+  {id:"side",title:"Side junction",text:"The branch toward the neighboring house, with one continuous surface through the turn."},
+  {id:"gate",title:"Gate junction",text:"The approach toward the gate, paved right up to the entry."},
+  {id:"long-road",title:"The long road",text:"The main stretch along the bamboo, now a smooth, even lane."},
+  {id:"house-loop",title:"House loop",text:"The fork near the house becomes a clean Y with the lawn restored between the tracks."},
+  {id:"paver-circle",title:"Paver pad and loop",text:"The gravel area off the paver pad becomes a concrete loop around the planted island, meeting the existing pavers cleanly."},
+  {id:"house-front",title:"House front",text:"Two layout options for the approach to the house.",options:[
+    {key:"a",label:"Option A",text:"Curved drive with a gravel parking pad on the right."},
+    {key:"b",label:"Option B",text:"Wider concrete apron expanded to the left."}]}
+];
+const knob='<svg viewBox="0 0 24 24" fill="none" stroke="#1D221E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg>';
+function cmpHTML(beforeSrc,afterSrc,title){
+  return `<div class="cmp" style="--pos:50%">
+    <img class="after" src="${afterSrc}" alt="${title} as a concrete driveway" loading="lazy">
+    <img class="before" src="${beforeSrc}" alt="${title} as it is today" loading="lazy">
+    <div class="divider"></div><div class="knob">${knob}</div>
+    <span class="tag l">Today</span><span class="tag r">Concrete</span>
+    <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Compare ${title} today and with concrete">
+  </div>`;
+}
+function wire(cmp){
+  const r=cmp.querySelector("input"),tl=cmp.querySelector(".tag.l"),tr=cmp.querySelector(".tag.r");
+  const set=v=>{cmp.style.setProperty("--pos",v+"%");tl.style.opacity=v<12?0:1;tr.style.opacity=v>88?0:1;};
+  r.addEventListener("input",()=>set(r.value));
+}
+const g=document.getElementById("gallery");
+VIEWS.forEach((v,i)=>{
+  const el=document.createElement("article");el.className="view";
+  const first=v.options?v.options[0]:null;
+  const after=first?`img/${v.id}-${first.key}-after.jpg`:`img/${v.id}-after.jpg`;
+  const before=first?`img/${v.id}-a-before.jpg`:`img/${v.id}-before.jpg`;
+  el.innerHTML=`<div class="view-head"><h3>${v.title}</h3>${v.options?`<div class="opts" role="group" aria-label="Layout option">${v.options.map((o,j)=>`<button type="button" data-k="${o.key}" aria-pressed="${j===0}">${o.label}</button>`).join("")}</div>`:`<span class="n">View ${i+1} of ${VIEWS.length}</span>`}</div>
+    ${cmpHTML(before,after,v.title)}
+    <p class="cap">${first?first.text:v.text}</p>
+    ${i===0?'<p class="hint">Tip: drag anywhere on a photo, or tab to it and use the arrow keys.</p>':""}`;
+  g.appendChild(el);
+  wire(el.querySelector(".cmp"));
+  if(v.options){
+    el.querySelectorAll(".opts button").forEach(b=>b.addEventListener("click",()=>{
+      const o=v.options.find(x=>x.key===b.dataset.k);
+      el.querySelector(".cmp .after").src=`img/${v.id}-${o.key}-after.jpg`;
+      el.querySelector(".cap").textContent=o.text;
+      el.querySelectorAll(".opts button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    }));
+  }
+});
+const LOTS={"1830":[[7,561],[427,564],[430,433],[764,436],[764,420],[361,417],[358,433],[10,430]],"1820":[[427,564],[761,564],[764,436],[430,433]],"1812":[[0,719],[456,728],[459,584],[758,584],[761,564],[427,564],[7,561]],"1922":[[10,430],[358,433],[361,417],[764,420],[764,407],[430,404],[433,305],[121,305],[10,410]],"1930":[[430,404],[764,407],[768,276],[433,272],[433,305]],"1942":[[121,305],[433,305],[433,272],[436,141],[771,144],[771,131],[436,128],[440,0]]};
+const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
+const HEMPEL=764, Y0=580, fy=y=>Y0-y, NS="http://www.w3.org/2000/svg";
+const svg=document.getElementById("plan");
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+const pts=p=>p.map(([x,y])=>x+","+fy(y)).join(" ");
+const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function drawBase(){
+  svg.innerHTML="";
+  const clip=el("clipPath",{id:"vc"});el("rect",{x:-6,y:2,width:810,height:318},clip);
+  const g=el("g",{"clip-path":"url(#vc)"});
+  for(const [id,p] of Object.entries(LOTS)){
+    const h=HH.find(x=>x.id===id);
+    el("polygon",{points:pts(p),class:"lot",fill:h?cv(h.c):cv("--lot-other"),"fill-opacity":h?.22:1},g);
+  }
+  window.roadG=el("g",{},g);
+  const L=[["1830",170,500,"Rettew"],["1922",200,365,""],["1820",600,505,""],["1930",600,340,""]];
+  L.forEach(([id,x,y,sub])=>{const t=el("text",{x,y:fy(y),class:"lbl","text-anchor":"middle"},g);t.textContent=id;
+    if(!HH.find(h=>h.id===id)){t.setAttribute("opacity",.45);t.style.fontSize="16px";}});
+  const st=el("text",{x:782,y:fy(420),class:"street","text-anchor":"middle",transform:`rotate(90 782 ${fy(420)})`});st.textContent="HEMPEL AVE";
+}
+function drawRoad(d){
+  const g=window.roadG;g.innerHTML="";
+  const pr=el("polygon",{points:pts([[302,514],[360,514],[360,488],[427,488],[427,434],[302,434]]),"fill-opacity":.55,stroke:cv("--h1830"),"stroke-width":1.5},g);pr.style.fill=cv("--h1830");
+  const pl=el("text",{x:364,y:fy(452),class:"tick","text-anchor":"middle"},g);pl.textContent="1830 only";pl.style.fill=cv("--ground");
+  const yT=fy(434),yB=fy(405),h=yB-yT;
+  d.segs.forEach(s=>{
+    const k=s.users.length, t=(k-1)/3;
+    const mix=`color-mix(in srgb, ${cv("--road4")} ${Math.round(t*100)}%, ${cv("--road1")})`;
+    const r=el("rect",{x:HEMPEL-s.b,y:yT,width:s.b-s.a,height:h},g);r.style.fill=mix;
+    if(s.b-s.a>40){const tx=el("text",{x:HEMPEL-(s.a+s.b)/2,y:yT+h/2+4,class:"tick","text-anchor":"middle"},g);tx.textContent=k===4?"All 4 share":k+" share";tx.style.fill=t>.5?cv("--ground"):cv("--ink");}
+  });
+  el("rect",{x:HEMPEL-d.end,y:yT,width:d.end,height:h,fill:"none",stroke:cv("--ink"),"stroke-opacity":.5},g);
+  // turn-offs
+  [["1820",d.p["1820"],1],["1930",d.p["1930"],-1]].forEach(([id,dist,dir])=>{
+    const x=HEMPEL-dist, y1=dir>0?yT:yB, y2=y1-dir*34;
+    el("line",{x1:x,y1,x2:x,y2,stroke:cv(HH.find(h=>h.id===id).c),"stroke-width":7,"stroke-linecap":"round"},g);
+    const t=el("text",{x:x+8,y:dir>0?y2+10:y2-2,class:"tick"},g);t.textContent=dist+" ft";
+  });
+  // west end markers
+  const xe=HEMPEL-d.end;
+  [["1830",1],["1922",-1]].forEach(([id,dir])=>{const y1=dir>0?yT:yB;el("line",{x1:xe,y1,x2:xe-18,y2:y1-dir*28,stroke:cv(HH.find(h=>h.id===id).c),"stroke-width":7,"stroke-linecap":"round"},g);});
+  const t=el("text",{x:xe+6,y:yB+16,class:"tick"},g);t.textContent=d.end+" ft";
+}
+function compute(){
+  const p={"1930":101,"1820":242,"1830":335,"1922":335}, end=335;
+  const bps=[0,101,242,335];
+  const segs=[];for(let i=1;i<bps.length;i++){const a=bps[i-1],b=bps[i];segs.push({a,b,users:HH.filter(h=>p[h.id]>=b).map(h=>h.id)});}
+  const feet={};HH.forEach(h=>feet[h.id]=0);
+  segs.forEach(s=>s.users.forEach(u=>feet[u]+=(s.b-s.a)/s.users.length));
+  return {p,end,segs,feet};
+}
+const num=id=>parseFloat(document.getElementById(id).value.replace(/[^0-9.]/g,""))||0;
+const money=v=>"$"+Math.round(v).toLocaleString("en-US");
+function render(){
+  const d=compute(),rate=num("rate"),F=num("fixed"),As=num("aShared"),Ap=num("aPriv");
+  const roadOnly=As*rate+F;
+  const whole=(As+Ap)*rate+F;
+  const sharedInWhole=As*rate+(As+Ap>0?F*As/(As+Ap):0);
+  const privInWhole=whole-sharedInWhole;
+  let sumA=0,sumB=0;
+  const rows=HH.map(h=>{const pct=d.feet[h.id]/d.end,A=roadOnly*pct,B=sharedInWhole*pct;sumA+=A;sumB+=B;
+    return `<tr><td><span class="dot" style="background:var(${h.c})"></span>${h.addr}<div class="bar"><i style="width:${pct*100}%;background:var(${h.c})"></i></div></td><td class="num"><span class="pct">${(pct*100).toFixed(1)}%</span></td><td class="num">${money(A)}</td><td class="num">${money(B)}</td><td class="num save">${money(A-B)}</td></tr>`}).join("");
+  document.getElementById("shareRows").innerHTML=rows+`<tr class="priv"><td><span class="dot" style="background:var(--h1830)"></span>1830 driveway</td><td class="num">1830 only</td><td class="num">not built</td><td class="num">${money(privInWhole)}</td><td class="num"></td></tr>`;
+  document.getElementById("shareFoot").innerHTML=`<tr><td>Total</td><td class="num">100%</td><td class="num">${money(roadOnly)}</td><td class="num">${money(whole)}</td><td class="num save">${money(sumA-sumB)}</td></tr>`;
+  const c1830=sharedInWhole*d.feet["1830"]/d.end+privInWhole;
+  document.getElementById("totals").innerHTML=`<div class="tot"><span class="k">Shared road only</span><span class="v">${money(roadOnly)}</span><span class="s">${As.toLocaleString("en-US")} sq ft, one job</span></div><div class="tot win"><span class="k">Whole job</span><span class="v">${money(whole)}</span><span class="s">${(As+Ap).toLocaleString("en-US")} sq ft. 1830 pays ${money(c1830)} of it</span></div>`;
+  document.getElementById("segs").innerHTML=d.segs.map(s=>`<span>${s.a} to ${s.b} ft from Hempel (${s.b-s.a} ft): split ${s.users.length} ways among ${s.users.join(", ")}</span>`).join("")+`<span>"Saves" is what each household keeps when the 1830 driveway is poured in the same job and carries its share of the fixed costs.</span>`;
+  drawRoad(d);
+}
+drawBase();
+["rate","fixed","aShared","aPriv"].forEach(id=>{const e=document.getElementById(id);e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US");});});
+try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawBase();render();});new MutationObserver(()=>{drawBase();render();}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});}catch(e){}
+render();
+</script>
+</body>
+</html>
