@@ -59,15 +59,15 @@ header{display:grid;gap:16px}
 .cmp .divider{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
 .cmp .knob{position:absolute;top:50%;left:var(--pos,50%);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);display:grid;place-items:center;pointer-events:none}
 .cmp .knob svg{width:26px;height:26px}
-.cmp .tag,.cmp .mark{position:absolute;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;padding:4px 10px;border-radius:3px;color:#fff;background:rgba(20,24,20,.62);pointer-events:none}
+.cmp .tag,.mark{position:absolute;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;padding:4px 10px;border-radius:3px;color:#fff;background:rgba(20,24,20,.62);pointer-events:none}
 .cmp .tag{bottom:12px;transition:opacity .2s}
 .cmp .tag.l{left:12px} .cmp .tag.r{right:12px}
 /* width marker, drawn in the photo's 1600x900 pixel space */
-.cmp .dim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.cmp .dim line{vector-effect:non-scaling-stroke;stroke-linecap:round}
-.cmp .dim .sh line{stroke:rgba(0,0,0,.5);stroke-width:5px}
-.cmp .dim .ln line{stroke:#fff;stroke-width:2.5px}
-.cmp .mark{z-index:1;transform:translate(-50%,6px);white-space:nowrap}
+.dim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.dim line{vector-effect:non-scaling-stroke;stroke-linecap:round}
+.dim .sh line{stroke:rgba(0,0,0,.5);stroke-width:5px}
+.dim .ln line{stroke:#fff;stroke-width:2.5px}
+.mark{z-index:1;transform:translate(-50%,6px);white-space:nowrap}
 .cmp input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y}
 .cmp:has(input:focus-visible){outline:3px solid var(--oak);outline-offset:3px}
 
@@ -79,7 +79,8 @@ header{display:grid;gap:16px}
 
 /* road sections */
 .road{display:grid;gap:24px}
-img.shot{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--line)}
+.shot{position:relative;border-radius:6px;overflow:hidden;background:var(--line)}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 
 /* why + split */
 .why{display:grid;gap:18px}
@@ -140,7 +141,7 @@ img.shot{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover
 .steps li p{color:var(--muted)}
 footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:18px}
 @media (max-width:480px){.fields2{grid-template-columns:1fr}.wrap{padding-block:28px 48px;gap:44px}
-  .cmp .tag,.cmp .mark{font-size:.72rem;line-height:1.3;padding:3px 7px}.cmp .tag{bottom:8px}.cmp .tag.l{left:8px}.cmp .tag.r{right:8px}}
+  .cmp .tag,.mark{font-size:.72rem;line-height:1.3;padding:3px 7px}.cmp .tag{bottom:8px}.cmp .tag.l{left:8px}.cmp .tag.r{right:8px}}
 @media (prefers-reduced-motion:reduce){.cmp .tag{transition:none}}
 </style>
 </head>
@@ -171,7 +172,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       </article>
       <article class="view">
         <h3>Interior road</h3>
-        <div data-view="interior" data-title="Interior road" data-dim="606 1262 500" data-dim-label="16 ft wide"></div>
+        <div data-view="interior" data-title="Interior road" data-dim="606 1262 500" data-dim-label="12 ft wide"></div>
         <p class="cap">The straight run through the trees, paved edge to edge.</p>
       </article>
     </div>
@@ -222,12 +223,12 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div class="gallery">
       <article class="view">
         <h3>Along the road</h3>
-        <img class="shot" src="img/wide-section.jpg" alt="Concrete road widening on both sides into a wide section, with the road to Hempel Ave beyond" loading="lazy">
+        <div class="shot"><img src="img/wide-section.jpg" alt="Concrete road widening on both sides into a wide section, with the road to Hempel Ave beyond" loading="lazy"></div>
         <p class="cap">Looking toward Hempel Ave, the road widens on both sides and then narrows back to the regular lane.</p>
       </article>
       <article class="view">
         <h3>From above</h3>
-        <img class="shot" src="img/wide-section-top.jpg" alt="Overhead view of the wide section with a pickup truck and an SUV side by side" loading="lazy">
+        <div class="shot" data-dim="561 1038 665" data-dim-label="20 ft wide"><img src="img/wide-section-top.jpg" alt="Overhead view of the wide section with a pickup truck and an SUV side by side" loading="lazy"></div>
         <p class="cap">The same idea from above, with a pickup and an SUV side by side.</p>
       </article>
     </div>
@@ -277,7 +278,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
           <div class="field"><label for="aShared">Shared road (sq ft)</label><input id="aShared" inputmode="numeric" value="4,200" autocomplete="off"></div>
         </div>
         <p class="note"><b>These are estimates, not quotes.</b> $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
-        <p class="note">Shared road: 335 ft long by about 16 ft wide, plus the apron at Hempel.</p>
+        <p class="note">Shared road: 335 ft long by about 12 ft wide, plus the apron at Hempel.</p>
         <p class="note">The whole cost, fixed costs included, is split by road use. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
       </div>
       <div class="table-wrap">
@@ -355,6 +356,7 @@ document.querySelectorAll("[data-view]").forEach(el=>{
   el.innerHTML=cmpHTML(`img/${v}-before.jpg`,`img/${v}-after.jpg`,el.dataset.title,el.dataset.dim,el.dataset.dimLabel);
   wire(el.querySelector(".cmp"));
 });
+document.querySelectorAll(".shot[data-dim]").forEach(el=>el.insertAdjacentHTML("beforeend",dimHTML(el.dataset.dim,el.dataset.dimLabel)));
 const LOTS={"1830":[[7,561],[427,564],[430,433],[764,436],[764,420],[361,417],[358,433],[10,430]],"1820":[[427,564],[761,564],[764,436],[430,433]],"1812":[[0,719],[456,728],[459,584],[758,584],[761,564],[427,564],[7,561]],"1922":[[10,430],[358,433],[361,417],[764,420],[764,407],[430,404],[433,305],[121,305],[10,410]],"1930":[[430,404],[764,407],[768,276],[433,272],[433,305]],"1942":[[121,305],[433,305],[433,272],[436,141],[771,144],[771,131],[436,128],[440,0]]};
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
 const HEMPEL=764, Y0=580, fy=y=>Y0-y, NS="http://www.w3.org/2000/svg";
