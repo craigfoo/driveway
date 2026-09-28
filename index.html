@@ -72,18 +72,13 @@ header{display:grid;gap:16px}
 .cmp:has(input:focus-visible){outline:3px solid var(--oak);outline-offset:3px}
 
 .view{display:grid;gap:14px}
-.view-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
 .view p{color:var(--muted)}
 .gallery{display:grid;gap:48px}
-.opts{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
-.opts button{font:600 .95rem var(--display);letter-spacing:.08em;text-transform:uppercase;border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:4px;cursor:pointer}
-.opts button[aria-pressed="true"]{background:var(--oak);color:var(--oak-ink)}
-.opts button:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
 
 .hint{font-size:.9rem;color:var(--muted)}
 
-/* road sections + pull-off */
-.road,.pulloff{display:grid;gap:24px}
+/* road sections */
+.road{display:grid;gap:24px}
 img.shot{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--line)}
 
 /* why + split */
@@ -176,7 +171,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       </article>
       <article class="view">
         <h3>Interior road</h3>
-        <div data-view="interior" data-title="Interior road" data-dim="606 1262 500" data-dim-label="12 ft wide"></div>
+        <div data-view="interior" data-title="Interior road" data-dim="606 1262 500" data-dim-label="16 ft wide"></div>
         <p class="cap">The straight run through the trees, paved edge to edge.</p>
       </article>
     </div>
@@ -218,22 +213,22 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div data-view="long-road" data-title="The whole stretch"></div>
   </section>
 
-  <section class="pulloff" aria-labelledby="po-h">
+  <section class="road" aria-labelledby="wide-h">
     <div class="split-head">
-      <div class="eyebrow">Pull-off</div>
-      <h2 id="po-h">Room to pass</h2>
-      <p class="muted">The road is about 12 ft wide, room for one car at a time. A pull-off is a short, wider stretch where one car can wait while another goes by. There are two places it could go.</p>
+      <div class="eyebrow">Room to pass</div>
+      <h2 id="wide-h">A wide section</h2>
+      <p class="muted">A stretch where the road widens, with room for two cars side by side.</p>
     </div>
     <div class="gallery">
       <article class="view">
-        <div class="view-head"><h3>From above</h3></div>
-        <img class="shot" src="img/pull-off/overhead.jpg" alt="Overhead view of the concrete road widened into a pull-off, with a pickup truck and an SUV side by side" loading="lazy">
-        <p class="cap">The wider section fits two cars side by side.</p>
+        <h3>Along the road</h3>
+        <img class="shot" src="img/wide-section.jpg" alt="Concrete road widening on both sides into a wide section, with the road to Hempel Ave beyond" loading="lazy">
+        <p class="cap">Looking toward Hempel Ave, the road widens on both sides and then narrows back to the regular lane.</p>
       </article>
-      <article class="view" id="pulloff">
-        <div class="view-head"><h3>Where it could go</h3><div class="opts" role="group" aria-label="Pull-off location"><button type="button" data-k="a" aria-pressed="true">Option A</button><button type="button" data-k="b" aria-pressed="false">Option B</button></div></div>
-        <img class="shot" src="img/pull-off/option-a.jpg" alt="Concrete road near the street, widened on the right into a pull-off" loading="lazy">
-        <p class="cap">By the street, near the Hempel Ave end of the road.</p>
+      <article class="view">
+        <h3>From above</h3>
+        <img class="shot" src="img/wide-section-top.jpg" alt="Overhead view of the wide section with a pickup truck and an SUV side by side" loading="lazy">
+        <p class="cap">The same idea from above, with a pickup and an SUV side by side.</p>
       </article>
     </div>
   </section>
@@ -282,7 +277,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
           <div class="field"><label for="aShared">Shared road (sq ft)</label><input id="aShared" inputmode="numeric" value="4,200" autocomplete="off"></div>
         </div>
         <p class="note"><b>These are estimates, not quotes.</b> $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
-        <p class="note">Shared road: 335 ft long by about 12 ft wide, plus the apron at Hempel.</p>
+        <p class="note">Shared road: 335 ft long by about 16 ft wide, plus the apron at Hempel.</p>
         <p class="note">The whole cost, fixed costs included, is split by road use. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
       </div>
       <div class="table-wrap">
@@ -360,15 +355,6 @@ document.querySelectorAll("[data-view]").forEach(el=>{
   el.innerHTML=cmpHTML(`img/${v}-before.jpg`,`img/${v}-after.jpg`,el.dataset.title,el.dataset.dim,el.dataset.dimLabel);
   wire(el.querySelector(".cmp"));
 });
-const PULLOFF={a:{text:"By the street, near the Hempel Ave end of the road.",alt:"Concrete road near the street, widened on the right into a pull-off"},
-  b:{text:"By 1820, farther in from the street.",alt:"Concrete road near 1820, widened on the left into a pull-off"}};
-const po=document.getElementById("pulloff");
-po.querySelectorAll(".opts button").forEach(b=>b.addEventListener("click",()=>{
-  const k=b.dataset.k,img=po.querySelector("img");
-  img.src=`img/pull-off/option-${k}.jpg`;img.alt=PULLOFF[k].alt;
-  po.querySelector(".cap").textContent=PULLOFF[k].text;
-  po.querySelectorAll(".opts button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-}));
 const LOTS={"1830":[[7,561],[427,564],[430,433],[764,436],[764,420],[361,417],[358,433],[10,430]],"1820":[[427,564],[761,564],[764,436],[430,433]],"1812":[[0,719],[456,728],[459,584],[758,584],[761,564],[427,564],[7,561]],"1922":[[10,430],[358,433],[361,417],[764,420],[764,407],[430,404],[433,305],[121,305],[10,410]],"1930":[[430,404],[764,407],[768,276],[433,272],[433,305]],"1942":[[121,305],[433,305],[433,272],[436,141],[771,144],[771,131],[436,128],[440,0]]};
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
 const HEMPEL=764, Y0=580, fy=y=>Y0-y, NS="http://www.w3.org/2000/svg";
