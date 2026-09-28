@@ -51,6 +51,8 @@ header{display:grid;gap:16px}
 .legend span{display:inline-flex;align-items:center;gap:8px}
 .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
 .sw.dirt{background:var(--sand)} .sw.conc{background:var(--concrete)}
+.notice{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--oak);border-radius:6px;padding:12px 16px}
+.notice b{font-weight:600}
 
 /* comparison slider */
 .cmp{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--line);user-select:none;-webkit-user-select:none;touch-action:pan-y}
@@ -155,6 +157,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <span><i class="sw dirt"></i>Left of the slider: the road today</span>
       <span><i class="sw conc"></i>Right of the slider: concrete</span>
     </div>
+    <p class="notice"><b>No quotes yet.</b> The costs on this page are rough estimates to help us decide whether to do this. If everyone is interested, we'll get three quotes from concrete contractors.</p>
   </header>
 
   <section class="road" aria-labelledby="hempel-h">
@@ -271,13 +274,13 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
 
     <div class="split-grid">
       <div class="controls">
-        <h3>Cost estimate</h3>
+        <h3>Rough cost estimate</h3>
         <div class="fields2">
           <div class="field"><label for="rate">Concrete, per sq ft ($)</label><input id="rate" inputmode="decimal" value="11" autocomplete="off"></div>
           <div class="field"><label for="fixed">Fixed job costs ($)</label><input id="fixed" inputmode="numeric" value="4,000" autocomplete="off"></div>
           <div class="field"><label for="aShared">Shared road (sq ft)</label><input id="aShared" inputmode="numeric" value="4,200" autocomplete="off"></div>
         </div>
-        <p class="note"><b>These are estimates, not quotes.</b> $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
+        <p class="note"><b>These are rough estimates, not quotes.</b> Real prices will come from three contractor quotes if everyone is interested. $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
         <p class="note">Shared road: 335 ft long by about 12 ft wide, plus the apron at Hempel.</p>
         <p class="note">The whole cost, fixed costs included, is split by road use. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
       </div>
