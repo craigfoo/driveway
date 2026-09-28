@@ -76,6 +76,10 @@ header{display:grid;gap:16px}
 
 .hint{font-size:.9rem;color:var(--muted)}
 
+/* 1930 detail + pull-off */
+.detail,.pulloff{display:grid;gap:24px}
+img.shot{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:var(--line)}
+
 /* why + split */
 .why{display:grid;gap:18px}
 .why ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px 32px}
@@ -151,6 +155,35 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
   </header>
 
   <section class="gallery" id="gallery" aria-label="Before and after photos"></section>
+
+  <section class="detail" aria-labelledby="d1930-h">
+    <div class="split-head">
+      <div class="eyebrow">A closer look</div>
+      <h2 id="d1930-h">Where 1930 turns off</h2>
+      <p class="muted">1930 turns off about 100 ft from Hempel Ave. The concrete runs right up to 1930's existing driveway, with no strip of loose sand between the two.</p>
+    </div>
+    <div id="d1930"></div>
+  </section>
+
+  <section class="pulloff" aria-labelledby="po-h">
+    <div class="split-head">
+      <div class="eyebrow">Pull-off</div>
+      <h2 id="po-h">Room to pass</h2>
+      <p class="muted">The road is about 12 ft wide, room for one car at a time. A pull-off is a short, wider stretch where one car can wait while another goes by. There are two places it could go.</p>
+    </div>
+    <div class="gallery">
+      <article class="view">
+        <div class="view-head"><h3>From above</h3></div>
+        <img class="shot" src="img/pull-off/overhead.jpg" alt="Overhead view of the concrete road widened into a pull-off, with a pickup truck and an SUV side by side" loading="lazy">
+        <p class="cap">The wider section fits two cars side by side.</p>
+      </article>
+      <article class="view" id="pulloff">
+        <div class="view-head"><h3>Where it could go</h3><div class="opts" role="group" aria-label="Pull-off location"><button type="button" data-k="a" aria-pressed="true">Option A</button><button type="button" data-k="b" aria-pressed="false">Option B</button></div></div>
+        <img class="shot" src="img/pull-off/option-a.jpg" alt="Concrete road near the street, widened on the right into a pull-off" loading="lazy">
+        <p class="cap">By the street, near the Hempel Ave end of the road.</p>
+      </article>
+    </div>
+  </section>
 
   <section class="why">
     <div class="eyebrow">Why do it together</div>
@@ -288,6 +321,18 @@ VIEWS.forEach((v,i)=>{
     }));
   }
 });
+const d1930=document.getElementById("d1930");
+d1930.innerHTML=cmpHTML("img/1930-driveway-before.jpg","img/1930-driveway-after.jpg","The 1930 turn-off");
+wire(d1930.querySelector(".cmp"));
+const PULLOFF={a:{text:"By the street, near the Hempel Ave end of the road.",alt:"Concrete road near the street, widened on the right into a pull-off"},
+  b:{text:"By 1820, farther in from the street.",alt:"Concrete road near 1820, widened on the left into a pull-off"}};
+const po=document.getElementById("pulloff");
+po.querySelectorAll(".opts button").forEach(b=>b.addEventListener("click",()=>{
+  const k=b.dataset.k,img=po.querySelector("img");
+  img.src=`img/pull-off/option-${k}.jpg`;img.alt=PULLOFF[k].alt;
+  po.querySelector(".cap").textContent=PULLOFF[k].text;
+  po.querySelectorAll(".opts button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+}));
 const LOTS={"1830":[[7,561],[427,564],[430,433],[764,436],[764,420],[361,417],[358,433],[10,430]],"1820":[[427,564],[761,564],[764,436],[430,433]],"1812":[[0,719],[456,728],[459,584],[758,584],[761,564],[427,564],[7,561]],"1922":[[10,430],[358,433],[361,417],[764,420],[764,407],[430,404],[433,305],[121,305],[10,410]],"1930":[[430,404],[764,407],[768,276],[433,272],[433,305]],"1942":[[121,305],[433,305],[433,272],[436,141],[771,144],[771,131],[436,128],[440,0]]};
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
 const HEMPEL=764, Y0=580, fy=y=>Y0-y, NS="http://www.w3.org/2000/svg";
