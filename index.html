@@ -79,8 +79,17 @@ header{display:grid;gap:16px}
 
 .hint{font-size:.9rem;color:var(--muted)}
 
-/* road sections */
-.road{display:grid;gap:24px}
+/* road sections + quotes */
+.road,.quotes{display:grid;gap:24px}
+.bids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
+.bid{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:grid;gap:8px;align-content:start}
+.bid h3{font-size:1.35rem}
+.bid .who{font-size:.92rem;color:var(--muted)}
+.bid .price{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums;margin-top:4px}
+.bid .price.none{font-size:1.3rem;color:var(--muted)}
+.bid .note{font-size:.9rem;color:var(--muted)}
+.bid .contact{display:grid;gap:4px;font-size:.95rem;border-top:1px solid var(--line);padding-top:10px;margin-top:4px}
+.bid .contact a{color:var(--oak);text-underline-offset:2px;overflow-wrap:anywhere}
 .shot{position:relative;border-radius:6px;overflow:hidden;background:var(--line)}
 .shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 
@@ -157,7 +166,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <span><i class="sw dirt"></i>Left of the slider: the road today</span>
       <span><i class="sw conc"></i>Right of the slider: concrete</span>
     </div>
-    <p class="notice"><b>No quotes yet.</b> The costs on this page are rough estimates to help us decide whether to do this. If everyone is interested, we'll get three quotes from concrete contractors.</p>
+    <p class="notice"><b>Early numbers only.</b> The costs on this page are rough estimates, and the first contractor quotes below are preliminary. If everyone is interested, we'll get three firm quotes for the same job.</p>
   </header>
 
   <section class="road" aria-labelledby="hempel-h">
@@ -247,6 +256,36 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <li><span><b>Better access.</b> A firm surface for delivery trucks, emergency vehicles, strollers and bikes.</span></li>
       <li><span><b>Property value.</b> A paved shared drive reads as finished and well kept to buyers.</span></li>
     </ul>
+  </section>
+
+  <section class="quotes" id="quotes" aria-labelledby="quotes-h">
+    <div class="split-head">
+      <div class="eyebrow">Bids</div>
+      <h2 id="quotes-h">Quotes so far</h2>
+      <p class="muted">Two of three contractors have given a price. These first numbers don't cover the same work, so they can't be compared yet. If everyone is interested, we'll ask each for a firm quote on the same job: the full 335 ft shared road, about 4,200 sq ft of 4 in. fiber-reinforced concrete. Firm quotes will then replace the rough estimate in the cost split below.</p>
+    </div>
+    <div class="bids">
+      <article class="bid">
+        <h3>T&amp;M Concrete</h3>
+        <p class="who">Tim McCreless</p>
+        <p class="price">$24,500</p>
+        <p class="note">For 2,600 sq ft of 4 in. fiber-reinforced concrete, about $9.42 per sq ft. The shared road is about 4,200 sq ft. Estimate sent without meeting in person.</p>
+        <div class="contact"><a href="tel:+14072769641">407-276-9641</a></div>
+      </article>
+      <article class="bid">
+        <h3>Cultivate Construction</h3>
+        <p class="who">Blake</p>
+        <p class="price">About $30,000</p>
+        <p class="note">Approximate. What area and thickness it covers is still to be confirmed.</p>
+        <div class="contact"><a href="tel:+14078089586">407-808-9586</a><a href="https://www.cultivateconst.com/" target="_blank" rel="noopener">cultivateconst.com</a></div>
+      </article>
+      <article class="bid">
+        <h3>Peter Williams Construction Services</h3>
+        <p class="who">Peter and S. Williams</p>
+        <p class="price none">No quote yet</p>
+        <div class="contact"><span><a href="tel:+14072276562">407-227-6562</a> (P. Williams)</span><span><a href="tel:+14076171898">407-617-1898</a> (S. Williams)</span><a href="mailto:peterwilliamsconstruction@gmail.com">peterwilliamsconstruction@gmail.com</a></div>
+      </article>
+    </div>
   </section>
 
   <section class="split" aria-labelledby="split-h">
