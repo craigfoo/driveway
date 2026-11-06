@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="A proposal to pave our shared dirt road off Hempel Ave in concrete, with before and after photos, a cost split and a maintenance plan.">
+<meta name="description" content="A proposal to pave our shared dirt road off Hempel Ave in concrete, with before and after photos, who owns the road, a cost split and a maintenance plan.">
 <meta name="robots" content="noindex">
 <title>Our Shared Driveway</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,8 +79,8 @@ header{display:grid;gap:16px}
 
 .hint{font-size:.9rem;color:var(--muted)}
 
-/* road sections + quotes */
-.road,.quotes{display:grid;gap:24px}
+/* road sections + quotes + records */
+.road,.quotes,.rights{display:grid;gap:24px}
 .bids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
 .bid{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:grid;gap:8px;align-content:start}
 .bid h3{font-size:1.35rem}
@@ -91,6 +91,40 @@ header{display:grid;gap:16px}
 .bid .contact a{color:var(--oak);text-underline-offset:2px;overflow-wrap:anywhere}
 .shot{position:relative;border-radius:6px;overflow:hidden;background:var(--line)}
 .shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+
+/* who owns the road: strip map + recorded documents */
+.rmap .rm-lot{stroke:var(--ink);stroke-opacity:.22}
+.rmap .rm-l1830{fill:var(--h1830);fill-opacity:.13} .rmap .rm-l1820{fill:var(--h1820);fill-opacity:.13}
+.rmap .rm-l1922{fill:var(--h1922);fill-opacity:.13} .rmap .rm-l1930{fill:var(--h1930);fill-opacity:.13}
+.rmap .rm-s1830{fill:var(--h1830);fill-opacity:.34} .rmap .rm-s1922{fill:var(--h1922);fill-opacity:.34}
+.rmap .rm-edge{fill:none;stroke:var(--ink);stroke-opacity:.5;stroke-width:1.2}
+.rmap .rm-hatch{stroke:var(--ink);stroke-opacity:.3;stroke-width:1.6}
+.rmap .rm-esmt{fill:url(#rm-hatch);stroke:var(--ink);stroke-width:2;stroke-dasharray:8 5}
+.rmap .rm-pill{fill:var(--panel);stroke:var(--ink);stroke-opacity:.4}
+.rmap .rm-pt{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.06em;fill:var(--ink)}
+.rmap .rm-ps{font-family:var(--body);font-size:12.5px;fill:var(--muted)}
+.rmap .rm-sl{font-family:var(--body);font-weight:600;font-size:13px;fill:var(--ink)}
+.rmap .rm-lbl{font-family:var(--display);font-weight:700;font-size:26px;fill:var(--ink)}
+.rmap .rm-turn{stroke-width:7;stroke-linecap:round}
+.rmap .rm-t1830{stroke:var(--h1830)} .rmap .rm-t1820{stroke:var(--h1820)} .rmap .rm-t1922{stroke:var(--h1922)} .rmap .rm-t1930{stroke:var(--h1930)}
+.rmap .rm-ave{fill:var(--line)}
+.rmap .rm-street{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;fill:var(--muted)}
+.rmap .rm-axis{fill:none;stroke:var(--ink);stroke-opacity:.4}
+.rmap .rm-tk{font-family:var(--body);font-size:12.5px;fill:var(--muted)}
+.plan svg.rmap{min-width:680px}
+.swipe{display:none}
+.plan.scrolls .swipe{display:inline}
+.deeds{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.deed{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.deed-who{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;color:var(--muted)}
+.deed-who i{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none}
+.deed h3{font-size:1.35rem}
+.deed blockquote{margin:0;padding:12px 14px;background:var(--ground);border-left:3px solid var(--c);border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.8rem;line-height:1.6;overflow-wrap:anywhere}
+.deed .cite{font-size:.85rem;color:var(--muted);margin-top:auto}
+.deed .doc{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--oak);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.deed .doc:hover{border-color:var(--oak)}
+.deed .doc:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
+.deed .doc svg{width:16px;height:16px;flex:none}
 
 /* why + split */
 .why{display:grid;gap:18px}
@@ -129,6 +163,7 @@ header{display:grid;gap:16px}
 .field input[type=range]{width:100%;accent-color:var(--oak)}
 .field input:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
 .note{font-size:.88rem;color:var(--muted)}
+.note a,figcaption a{color:var(--oak);text-underline-offset:2px}
 .controls h3{margin-bottom:-4px}
 .fields2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
 .table-wrap{display:grid;gap:14px;min-width:0}
@@ -257,6 +292,88 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     </ul>
   </section>
 
+  <section class="rights" id="rights" aria-labelledby="rights-h">
+    <div class="split-head">
+      <div class="eyebrow">On record</div>
+      <h2 id="rights-h">Who owns the road</h2>
+      <p class="muted">The shared road is two 15 ft strips side by side. 1830 owns the north strip and 1922 owns the south strip. 1820 and 1930 each have a recorded easement to drive over the first 200 ft from Hempel Ave, across the full 30 ft. Edward J. Barrett, who owned all four lots, set this up when he divided the land between 1980 and 1983.</p>
+    </div>
+
+    <figure class="plan">
+      <div class="plan-scroll"><svg class="rmap" viewBox="0 0 872 312" role="img" aria-label="Strip map of the shared road. The north 15 ft strip belongs to 1830 and the south 15 ft strip belongs to 1922. A 30 ft by 200 ft easement for 1820 and 1930 covers both strips from Hempel Ave. 1930 turns off at 101 ft, 1820 at 242 ft, and 1830 and 1922 split at 335 ft.">
+        <defs><pattern id="rm-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="rm-hatch" x1="0" y1="0" x2="0" y2="9"/></pattern></defs>
+        <rect class="rm-lot rm-l1830" x="-20" y="20" width="178.6" height="82"/>
+        <rect class="rm-lot rm-l1820" x="158.6" y="20" width="653.4" height="82"/>
+        <rect class="rm-lot rm-l1922" x="-20" y="144" width="178.6" height="124"/>
+        <rect class="rm-lot rm-l1930" x="158.6" y="186" width="653.4" height="82"/>
+        <rect class="rm-s1830" x="-20" y="102" width="832" height="42"/>
+        <rect class="rm-s1922" x="158.6" y="144" width="653.4" height="42"/>
+        <path class="rm-edge" d="M0 102H812M0 144H812M158.6 186H812"/>
+        <rect class="rm-esmt" x="421.9" y="102" width="390.1" height="84"/>
+        <text class="rm-sl" x="290" y="127.5" text-anchor="middle">North 15 ft · owned by 1830</text>
+        <text class="rm-sl" x="290" y="169.5" text-anchor="middle">South 15 ft · owned by 1922</text>
+        <rect class="rm-pill" x="505" y="121" width="224" height="46" rx="5"/>
+        <text class="rm-pt" x="617" y="140.5" text-anchor="middle">1820 + 1930 EASEMENT</text>
+        <text class="rm-ps" x="617" y="158.5" text-anchor="middle">Full 30 ft width, first 200 ft</text>
+        <line class="rm-turn rm-t1930" x1="615" y1="186" x2="615" y2="216"/>
+        <line class="rm-turn rm-t1820" x1="340" y1="102" x2="340" y2="72"/>
+        <line class="rm-turn rm-t1830" x1="158.6" y1="102" x2="136" y2="74"/>
+        <line class="rm-turn rm-t1922" x1="158.6" y1="186" x2="136" y2="214"/>
+        <text class="rm-lbl" x="72" y="70" text-anchor="middle">1830</text>
+        <text class="rm-lbl" x="700" y="70" text-anchor="middle">1820</text>
+        <text class="rm-lbl" x="72" y="240" text-anchor="middle">1922</text>
+        <text class="rm-lbl" x="700" y="240" text-anchor="middle">1930</text>
+        <rect class="rm-ave" x="812" y="12" width="44" height="264"/>
+        <text class="rm-street" x="834" y="144" dy=".35em" text-anchor="middle" transform="rotate(90 834 144)">HEMPEL AVE</text>
+        <path class="rm-axis" d="M24 280H812M812 276v8M615 276v8M421.9 276v8M340 276v8M158.6 276v8"/>
+        <text class="rm-tk" x="812" y="300" text-anchor="middle">0 ft</text>
+        <text class="rm-tk" x="615" y="300" text-anchor="middle">101 ft</text>
+        <text class="rm-tk" x="421.9" y="300" text-anchor="middle">200 ft</text>
+        <text class="rm-tk" x="340" y="300" text-anchor="middle">242 ft</text>
+        <text class="rm-tk" x="158.6" y="300" text-anchor="middle">335 ft</text>
+      </svg></div>
+      <figcaption>North is up. Distances are measured from Hempel Ave and are to scale; the road's width is stretched so both strips show. Colored ticks mark where each household turns off.<span class="swipe"> Swipe sideways to see the whole road.</span></figcaption>
+    </figure>
+
+    <div class="deeds">
+      <article class="deed" style="--c:var(--h1830)">
+        <div class="deed-who"><i></i>1830 Hempel · Owner</div>
+        <h3>The north strip</h3>
+        <p>Part of 1830's lot: 15 ft wide, running 404 ft west from Hempel Ave between 1820's lot and 1922's strip.</p>
+        <blockquote>…thence S 88° 33' 44" E 335.08 feet to the West Right-of-Way line of Hemple Avenue, thence S 00° 22' W, along said Right-of-Way line, 15.0 feet, thence N 88° 33' 44" W 404.20 feet, thence N 00° 22' E 15.0 feet…</blockquote>
+        <p class="cite">Warranty deed from Edward J. Barrett. Signed Dec. 7, 1983, recorded Dec. 16, 1983. Official Records Book 3452, Page 1924 (Doc. 2048843).</p>
+        <a class="doc" href="records/1830-deed-1983.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the recorded deed (PDF)</a>
+      </article>
+      <article class="deed" style="--c:var(--h1922)">
+        <div class="deed-who"><i></i>1922 Hempel · Owner</div>
+        <h3>The south strip</h3>
+        <p>Part of 1922's lot: 15 ft wide, running 335 ft west from Hempel Ave between 1830's strip and 1930's lot, where it opens into the rest of 1922's land.</p>
+        <blockquote>…thence S 00° 22' W 15.0 feet, thence S 88° 33' 44" E 404.20 feet to the West Right-of-Way line of Hemple Avenue, thence S 00° 22' W, along said Right-of-Way line, 15.0 feet, thence N 88° 33' 44" W 335.08 feet…</blockquote>
+        <p class="cite">Warranty deed from Edward J. Barrett. Signed Dec. 7, 1983, recorded Dec. 16, 1983. Official Records Book 3452, Page 1935 (Doc. 2048848).</p>
+        <a class="doc" href="records/1922-deed-1983.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the recorded deed (PDF)</a>
+      </article>
+      <article class="deed" style="--c:var(--h1820)">
+        <div class="deed-who"><i></i>1820 Hempel · Easement</div>
+        <h3>Right of way: 30 × 200 ft</h3>
+        <p>The right to come and go over the full 30 ft width for the first 200 ft from Hempel Ave. This grant measures it from 1820's side: the 30 ft directly south of 1820's lot.</p>
+        <blockquote>…is granted an easement for ingress and egress over the following described property: … thence S 88°33'44" E 335.08' to the West Right-of-Way line of Hemple Avenue for a POB, thence S 00°22'00" W 30 ft. along said Right-of-Way line, thence N 88°33'44" W 200', thence N 00°22'00" E 30 feet thence S 88°33'44" E 200 ft to POB. Grantee agrees to improve and maintain the easement area for the purpose of providing a common driveway for Parcels 4, 5, 6 and 7.</blockquote>
+        <p class="cite">Quit-claim deed from Edward J. Barrett. Signed Apr. 3, 1981, recorded Apr. 16, 1981. Official Records Book 3186, Page 1932 (Doc. 1639726).</p>
+        <a class="doc" href="records/1820-easement-1981.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the recorded easement (PDF)</a>
+      </article>
+      <article class="deed" style="--c:var(--h1930)">
+        <div class="deed-who"><i></i>1930 Hempel · Easement</div>
+        <h3>Right of way: 30 × 200 ft</h3>
+        <p>The same 30 × 200 ft area, granted the same day. This grant measures it from 1930's side: the 30 ft directly north of 1930's lot.</p>
+        <blockquote>…an easement for ingress and egress over the following described property: … thence S 88°33'44" E 335.08 feet to the West Right-of-Way line of Hemple Avenue for a POB, thence N 00°22'00" E 30' along said Right-of-Way line, thence N 88°33'44" W 200 ft, thence S 00°22'00" W 30 ft. thence S 88°33'44" E 200 ft to the POB. Grantee agrees to improve and maintain the easement area for the purpose of providing a common driveway for parcels 4, 5, 6, and 7.</blockquote>
+        <p class="cite">Quit-claim deed from Edward J. Barrett. Signed Apr. 3, 1981, recorded Apr. 16, 1981. Official Records Book 3186, Page 1933 (Doc. 1639727).</p>
+        <a class="doc" href="records/1930-easement-1981.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the recorded easement (PDF)</a>
+      </article>
+    </div>
+
+    <p class="notice"><b>Upkeep.</b> Both 1981 easements end with the same promise from the owner of 1820 or 1930 at the time: "Grantee agrees to improve and maintain the easement area for the purpose of providing a common driveway for parcels 4, 5, 6, and 7." The documents don't say which lots parcels 4 to 7 are. Whether the promise binds today's owners is a question for the attorney who drafts our agreement.</p>
+    <p class="note">A plain-language summary of public records, not legal advice. The PDFs are copies of the recorded documents from the Orange County Comptroller's Official Records.</p>
+  </section>
+
   <section class="quotes" id="quotes" aria-labelledby="quotes-h">
     <div class="split-head">
       <div class="eyebrow">Bids</div>
@@ -294,13 +411,13 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
 
     <figure class="plan">
       <div class="plan-scroll"><svg id="plan" viewBox="-6 2 810 318" role="img" aria-label="Plan of the four parcels and the shared road, to scale"></svg></div>
-      <figcaption>Parcel lines to scale, from Orange County Property Appraiser data. North is up. Road shading gets darker where more households share it.</figcaption>
+      <figcaption>Parcel lines to scale, from Orange County Property Appraiser data. North is up. Road shading gets darker where more households share it. The dashed outline is the 30 ft by 200 ft easement held by 1820 and 1930 (see <a href="#rights">Who owns the road</a>).<span class="swipe"> Swipe sideways to see the whole road.</span></figcaption>
     </figure>
 
     <div class="sources">
       <figure class="src">
-        <a href="img/survey-split.jpg" target="_blank" rel="noopener"><img src="img/survey-split.jpg" alt="Site plan from the 1830 Hempel survey with the road marked in yellow, red and green sections" loading="lazy"></a>
-        <figcaption><b>Survey of 1830 Hempel, marked up.</b> Yellow: all four households. Red: 1820, 1830 and 1922. Green: 1830 and 1922. Section lengths are scaled from the surveyed 420.31 ft and 335.08 ft property lines.</figcaption>
+        <a href="img/survey-split-easement.jpg" target="_blank" rel="noopener"><img src="img/survey-split-easement.jpg" alt="Site plan from the 1830 Hempel survey with the road marked in yellow, red and green sections, and a dashed outline over the first 200 ft for the 1820 and 1930 easement" loading="lazy"></a>
+        <figcaption><b>Survey of 1830 Hempel, marked up.</b> Yellow: all four households. Red: 1820, 1830 and 1922. Green: 1830 and 1922. Dashed outline: the 1820 and 1930 easement, 30 ft wide for the first 200 ft. Section lengths are scaled from the surveyed 420.31 ft and 335.08 ft property lines.</figcaption>
       </figure>
       <figure class="src">
         <a href="img/google-measure.jpg" target="_blank" rel="noopener"><img src="img/google-measure.jpg" alt="Google Maps aerial with a 335.35 ft measurement along the road from Hempel Ave" loading="lazy"></a>
@@ -348,7 +465,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It sits in the yellow section, so all four share it.</p></div>
       <div class="rule"><h3>Disagreements</h3><p>Try mediation before anything else. A real estate attorney drafts and records the final agreement, a small cost when split four ways.</p></div>
     </div>
-    <p class="note">This is a framework to discuss, not legal advice. Existing deeds may already include a recorded easement or maintenance terms, so the attorney should check those first.</p>
+    <p class="note">This is a framework to discuss, not legal advice. The 1981 easements for 1820 and 1930 already include upkeep terms for the first 200 ft (see <a href="#rights">Who owns the road</a>), so the attorney should start from those.</p>
   </section>
 
   <section class="steps">
@@ -362,7 +479,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     </ol>
   </section>
 
-  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Parcel lines come from Orange County Property Appraiser data and are not a survey.</footer>
+  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Parcel lines come from Orange County Property Appraiser data and are not a survey. Ownership and easement details come from documents recorded in the Orange County Official Records.</footer>
 </div>
 
 <script>
@@ -427,6 +544,9 @@ function drawRoad(d){
     if(s.b-s.a>40){const tx=el("text",{x:HEMPEL-(s.a+s.b)/2,y:yT+h/2+4,class:"tick","text-anchor":"middle"},g);tx.textContent=k===4?"All 4 share":k+" share";tx.style.fill=t>.5?cv("--ground"):cv("--ink");}
   });
   el("rect",{x:HEMPEL-d.end,y:yT,width:d.end,height:h,fill:"none",stroke:cv("--ink"),"stroke-opacity":.5},g);
+  // the 1981 easement for 1820 and 1930: the full road width, first 200 ft from Hempel
+  el("rect",{x:HEMPEL-200,y:yT-3,width:203,height:h+6,fill:"none",stroke:cv("--ink"),"stroke-width":1.6,"stroke-dasharray":"6 4"},g);
+  const et=el("text",{x:HEMPEL-100,y:yT-8,class:"tick","text-anchor":"middle"},g);et.textContent="1820 + 1930 easement";
   // turn-offs
   [["1820",d.p["1820"],1],["1930",d.p["1930"],-1]].forEach(([id,dist,dir])=>{
     const x=HEMPEL-dist, y1=dir>0?yT:yB, y2=y1-dir*34;
@@ -461,6 +581,11 @@ drawBase();
 ["rate","fixed","aShared"].forEach(id=>{const e=document.getElementById(id);e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US");});});
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawBase();render();});new MutationObserver(()=>{drawBase();render();}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});}catch(e){}
 render();
+// on narrow screens the maps scroll sideways: start at the Hempel Ave end and say so
+const scrollers=[...document.querySelectorAll(".plan-scroll")];
+function fitMaps(){scrollers.forEach(s=>{const over=s.scrollWidth>s.clientWidth+1;s.closest(".plan").classList.toggle("scrolls",over);});}
+scrollers.forEach(s=>{s.scrollLeft=s.scrollWidth;});
+fitMaps();addEventListener("resize",fitMaps);
 </script>
 <script data-goatcounter="https://craig.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
