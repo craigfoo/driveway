@@ -400,7 +400,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div class="split-head">
       <div class="eyebrow">Cost split</div>
       <h2 id="split-h">Who pays for each stretch</h2>
-      <p class="muted">The first 200 ft from Hempel Ave is the 1981 easement, which 1820 and 1930 each agreed to improve and maintain (see <a href="#rights">Who owns the road</a>). So 1820 and 1930 split those 200 ft. Past the easement, you pay for the road you drive on: 1820, 1830 and 1922 split the stretch to 1820's turn-off at 242 ft, and 1830 and 1922 split the rest to 335 ft. Each household's share is the sum of its stretches.</p>
+      <p class="muted">The first 200 ft from Hempel Ave is the 1981 easement, described as a common driveway for four parcels (see <a href="#rights">Who owns the road</a>). All four households split those 200 ft evenly, and 1830 and 1922 split the remaining 135 ft to the end at 335 ft. Each household's share is the sum of its stretches.</p>
     </div>
 
     <figure class="src">
@@ -438,14 +438,14 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <p class="muted">A starting framework for a shared driveway maintenance agreement. Recorded with Orange County, it stays with each house if it sells, so the next owner is bound by the same terms.</p>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Shared sections</h3><p>Repairs are split the same way as the pour. 1820 and 1930 cover the 200 ft easement, 1820, 1830 and 1922 share 200 to 242 ft, and 1830 and 1922 share the rest.</p></div>
+      <div class="rule"><h3>Shared sections</h3><p>Repairs are split the same way as the pour. All four share the 200 ft easement, and 1830 and 1922 share the rest.</p></div>
       <div class="rule"><h3>Private sections</h3><p>Each household maintains its own driveway past the point where it leaves the shared road.</p></div>
       <div class="rule"><h3>Routine upkeep</h3><p>Sweeping, edging and trimming overhanging branches. Each household handles what borders its own lot, with no cost sharing.</p></div>
       <div class="rule"><h3>Damage you cause, you fix</h3><p>If a household's dumpster, moving truck or contractor cracks a slab, that household pays for the repair.</p></div>
       <div class="rule"><h3>Deciding on repairs</h3><p>Repairs under an agreed amount, such as $1,000, can go ahead. Larger ones need approval from households holding more than half the shares. Emergency fixes can be made right away.</p></div>
       <div class="rule"><h3>Paying for it</h3><p>One neighbor coordinates quotes and invoices. Everyone pays their share within 30 days. An optional reserve of $100 to $200 per household a year avoids collecting each time.</p></div>
       <div class="rule"><h3>Tree roots</h3><p>The live oaks along the road will eventually lift slabs. We should agree now whether root damage is shared or falls on the tree's owner, and ask bidders about root barriers.</p></div>
-      <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It's at the start of the easement, so 1820 and 1930 share it, the same as the first 200 ft.</p></div>
+      <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It's at the start of the easement, so all four share it.</p></div>
       <div class="rule"><h3>Disagreements</h3><p>Try mediation before anything else.</p></div>
     </div>
     <p class="note">This is a framework to discuss, not legal advice. The 1981 easements for 1820 and 1930 already include upkeep terms for the first 200 ft (see <a href="#rights">Who owns the road</a>), and this split builds on them.</p>
@@ -497,12 +497,10 @@ document.querySelectorAll("[data-view]").forEach(el=>{
 });
 document.querySelectorAll(".shot[data-dim]").forEach(el=>el.insertAdjacentHTML("beforeend",dimHTML(el.dataset.dim,el.dataset.dimLabel)));
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
-// The first 200 ft is the 1981 easement, which 1820 and 1930 each agreed to improve and maintain,
-// so they split it. Past it, each stretch is split among the households that drive on it.
+// All four split the first 200 ft (the 1981 easement); 1830 and 1922 split the rest.
 const SEGS=[
-  {a:0,b:200,users:["1820","1930"],what:"the easement"},
-  {a:200,b:242,users:["1820","1830","1922"]},
-  {a:242,b:335,users:["1830","1922"]}
+  {a:0,b:200,users:["1820","1830","1922","1930"],what:"the easement"},
+  {a:200,b:335,users:["1830","1922"]}
 ];
 function compute(){
   const end=335,feet={};HH.forEach(h=>feet[h.id]=0);
