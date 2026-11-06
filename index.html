@@ -18,7 +18,7 @@ img{max-width:100%}
 :root{
   --ground:#F2F3EF; --panel:#FFFFFF; --ink:#1D221E; --muted:#5B635C; --line:#D6D9D2;
   --oak:#3E6A3A; --oak-ink:#FFFFFF; --sand:#CDB98E; --concrete:#B9BCB5;
-  --h1830:#3E6A3A; --h1922:#356D8F; --h1820:#B07A1E; --h1930:#A4513B; --lot-other:#E3E5DF; --road1:#D9D5C9; --road4:#6F6A5E;
+  --h1830:#3E6A3A; --h1922:#356D8F; --h1820:#B07A1E; --h1930:#A4513B;
   --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
@@ -27,14 +27,14 @@ img{max-width:100%}
     color-scheme:dark;
     --ground:#141714; --panel:#1C201C; --ink:#E6E9E2; --muted:#9CA59C; --line:#2F352F;
     --oak:#7FB276; --oak-ink:#0F1A0E; --sand:#BFA878; --concrete:#8E928B;
-    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F; --lot-other:#252A25; --road1:#4A473F; --road4:#B5AE9C;
+    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --ground:#141714; --panel:#1C201C; --ink:#E6E9E2; --muted:#9CA59C; --line:#2F352F;
   --oak:#7FB276; --oak-ink:#0F1A0E; --sand:#BFA878; --concrete:#8E928B;
-    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F; --lot-other:#252A25; --road1:#4A473F; --road4:#B5AE9C;
+    --h1830:#7FB276; --h1922:#6FA8CC; --h1820:#D9A548; --h1930:#D9876F;
 }
 *{box-sizing:border-box}
 body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-inline:16px}
@@ -139,13 +139,7 @@ header{display:grid;gap:16px}
 .plan-scroll{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px}
 .plan svg{display:block;width:100%;min-width:560px;height:auto}
 .plan figcaption{font-size:.85rem;color:var(--muted)}
-.plan .lot{stroke:var(--ink);stroke-width:1;stroke-opacity:.35}
-.plan .lbl{font-family:var(--display);font-weight:700;font-size:22px;fill:var(--ink)}
-.plan .sub{font-family:var(--body);font-size:12px;fill:var(--muted)}
-.plan .street{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;fill:var(--muted)}
-.plan .tick{font-family:var(--body);font-size:11px;fill:var(--muted)}
-.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
-.src{margin:0;display:grid;gap:8px;align-content:start}
+.src{margin:0;display:grid;gap:8px;align-content:start;max-width:720px}
 .src img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
 .src figcaption{font-size:.88rem;color:var(--muted)}
 .src figcaption b{color:var(--ink);font-weight:600}
@@ -409,21 +403,10 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <p class="muted">The road is not used equally. 1830 and 1922 drive the full length from Hempel Ave. 1820 turns off partway down and 1930 turns off near the street. So each stretch of road is split evenly among the households that use it, and each household's share is the sum of its stretches.</p>
     </div>
 
-    <figure class="plan">
-      <div class="plan-scroll"><svg id="plan" viewBox="-6 2 810 318" role="img" aria-label="Plan of the four parcels and the shared road, to scale"></svg></div>
-      <figcaption>Parcel lines to scale, from Orange County Property Appraiser data. North is up. Road shading gets darker where more households share it. The dashed outline is the 30 ft by 200 ft easement held by 1820 and 1930 (see <a href="#rights">Who owns the road</a>).<span class="swipe"> Swipe sideways to see the whole road.</span></figcaption>
+    <figure class="src">
+      <a href="img/google-measure.jpg" target="_blank" rel="noopener"><img src="img/google-measure.jpg" alt="Google Maps aerial with a 335.35 ft measurement along the road from Hempel Ave" loading="lazy"></a>
+      <figcaption><b>Google Maps check.</b> Measured 335.35 ft from Hempel Ave to the end of the shared road. The survey says 335.08 ft, about 3 inches apart.</figcaption>
     </figure>
-
-    <div class="sources">
-      <figure class="src">
-        <a href="img/survey-split-easement.jpg" target="_blank" rel="noopener"><img src="img/survey-split-easement.jpg" alt="Site plan from the 1830 Hempel survey with the road marked in yellow, red and green sections, and a dashed outline over the first 200 ft for the 1820 and 1930 easement" loading="lazy"></a>
-        <figcaption><b>Survey of 1830 Hempel, marked up.</b> Yellow: all four households. Red: 1820, 1830 and 1922. Green: 1830 and 1922. Dashed outline: the 1820 and 1930 easement, 30 ft wide for the first 200 ft. Section lengths are scaled from the surveyed 420.31 ft and 335.08 ft property lines.</figcaption>
-      </figure>
-      <figure class="src">
-        <a href="img/google-measure.jpg" target="_blank" rel="noopener"><img src="img/google-measure.jpg" alt="Google Maps aerial with a 335.35 ft measurement along the road from Hempel Ave" loading="lazy"></a>
-        <figcaption><b>Google Maps check.</b> Measured 335.35 ft from Hempel Ave to the end of the shared road. The survey says 335.08 ft, about 3 inches apart.</figcaption>
-      </figure>
-    </div>
 
     <div class="split-grid">
       <div class="controls">
@@ -455,14 +438,14 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <p class="muted">A starting framework for a shared driveway maintenance agreement. Recorded with Orange County, it stays with each house if it sells, so the next owner is bound by the same terms.</p>
     </div>
     <div class="rules">
-      <div class="rule"><h3>Shared sections</h3><p>Repairs are split the same way as the pour. Yellow: all four. Red: 1820, 1830 and 1922. Green: 1830 and 1922.</p></div>
+      <div class="rule"><h3>Shared sections</h3><p>Repairs are split the same way as the pour. All four share the first 101 ft, 1820, 1830 and 1922 share 101 to 242 ft, and 1830 and 1922 share the rest.</p></div>
       <div class="rule"><h3>Private sections</h3><p>Each household maintains its own driveway past the point where it leaves the shared road.</p></div>
       <div class="rule"><h3>Routine upkeep</h3><p>Sweeping, edging and trimming overhanging branches. Each household handles what borders its own lot, with no cost sharing.</p></div>
       <div class="rule"><h3>Damage you cause, you fix</h3><p>If a household's dumpster, moving truck or contractor cracks a slab, that household pays for the repair.</p></div>
       <div class="rule"><h3>Deciding on repairs</h3><p>Repairs under an agreed amount, such as $1,000, can go ahead. Larger ones need approval from households holding more than half the shares. Emergency fixes can be made right away.</p></div>
       <div class="rule"><h3>Paying for it</h3><p>One neighbor coordinates quotes and invoices. Everyone pays their share within 30 days. An optional reserve of $100 to $200 per household a year avoids collecting each time.</p></div>
       <div class="rule"><h3>Tree roots</h3><p>The live oaks along the road will eventually lift slabs. We should agree now whether root damage is shared or falls on the tree's owner, and ask bidders about root barriers.</p></div>
-      <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It sits in the yellow section, so all four share it.</p></div>
+      <div class="rule"><h3>The apron at Hempel</h3><p>The section in the county right of way needs a county permit and is maintained by the owners, not the county. It's part of the first 101 ft, so all four share it.</p></div>
       <div class="rule"><h3>Disagreements</h3><p>Try mediation before anything else. A real estate attorney drafts and records the final agreement, a small cost when split four ways.</p></div>
     </div>
     <p class="note">This is a framework to discuss, not legal advice. The 1981 easements for 1820 and 1930 already include upkeep terms for the first 200 ft (see <a href="#rights">Who owns the road</a>), so the attorney should start from those.</p>
@@ -479,7 +462,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     </ol>
   </section>
 
-  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Parcel lines come from Orange County Property Appraiser data and are not a survey. Ownership and easement details come from documents recorded in the Orange County Official Records.</footer>
+  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Ownership and easement details come from documents recorded in the Orange County Official Records. The road diagram is not a survey.</footer>
 </div>
 
 <script>
@@ -513,51 +496,7 @@ document.querySelectorAll("[data-view]").forEach(el=>{
   wire(el.querySelector(".cmp"));
 });
 document.querySelectorAll(".shot[data-dim]").forEach(el=>el.insertAdjacentHTML("beforeend",dimHTML(el.dataset.dim,el.dataset.dimLabel)));
-const LOTS={"1830":[[7,561],[427,564],[430,433],[764,436],[764,420],[361,417],[358,433],[10,430]],"1820":[[427,564],[761,564],[764,436],[430,433]],"1812":[[0,719],[456,728],[459,584],[758,584],[761,564],[427,564],[7,561]],"1922":[[10,430],[358,433],[361,417],[764,420],[764,407],[430,404],[433,305],[121,305],[10,410]],"1930":[[430,404],[764,407],[768,276],[433,272],[433,305]],"1942":[[121,305],[433,305],[433,272],[436,141],[771,144],[771,131],[436,128],[440,0]]};
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
-const HEMPEL=764, Y0=580, fy=y=>Y0-y, NS="http://www.w3.org/2000/svg";
-const svg=document.getElementById("plan");
-function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
-const pts=p=>p.map(([x,y])=>x+","+fy(y)).join(" ");
-const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-function drawBase(){
-  svg.innerHTML="";
-  const clip=el("clipPath",{id:"vc"});el("rect",{x:-6,y:2,width:810,height:318},clip);
-  const g=el("g",{"clip-path":"url(#vc)"});
-  for(const [id,p] of Object.entries(LOTS)){
-    const h=HH.find(x=>x.id===id);
-    el("polygon",{points:pts(p),class:"lot",fill:h?cv(h.c):cv("--lot-other"),"fill-opacity":h?.22:1},g);
-  }
-  window.roadG=el("g",{},g);
-  const L=[["1830",170,500,"Rettew"],["1922",200,365,""],["1820",600,505,""],["1930",600,340,""]];
-  L.forEach(([id,x,y,sub])=>{const t=el("text",{x,y:fy(y),class:"lbl","text-anchor":"middle"},g);t.textContent=id;
-    if(!HH.find(h=>h.id===id)){t.setAttribute("opacity",.45);t.style.fontSize="16px";}});
-  const st=el("text",{x:782,y:fy(420),class:"street","text-anchor":"middle",transform:`rotate(90 782 ${fy(420)})`});st.textContent="HEMPEL AVE";
-}
-function drawRoad(d){
-  const g=window.roadG;g.innerHTML="";
-  const yT=fy(434),yB=fy(405),h=yB-yT;
-  d.segs.forEach(s=>{
-    const k=s.users.length, t=(k-1)/3;
-    const mix=`color-mix(in srgb, ${cv("--road4")} ${Math.round(t*100)}%, ${cv("--road1")})`;
-    const r=el("rect",{x:HEMPEL-s.b,y:yT,width:s.b-s.a,height:h},g);r.style.fill=mix;
-    if(s.b-s.a>40){const tx=el("text",{x:HEMPEL-(s.a+s.b)/2,y:yT+h/2+4,class:"tick","text-anchor":"middle"},g);tx.textContent=k===4?"All 4 share":k+" share";tx.style.fill=t>.5?cv("--ground"):cv("--ink");}
-  });
-  el("rect",{x:HEMPEL-d.end,y:yT,width:d.end,height:h,fill:"none",stroke:cv("--ink"),"stroke-opacity":.5},g);
-  // the 1981 easement for 1820 and 1930: the full road width, first 200 ft from Hempel
-  el("rect",{x:HEMPEL-200,y:yT-3,width:203,height:h+6,fill:"none",stroke:cv("--ink"),"stroke-width":1.6,"stroke-dasharray":"6 4"},g);
-  const et=el("text",{x:HEMPEL-100,y:yT-8,class:"tick","text-anchor":"middle"},g);et.textContent="1820 + 1930 easement";
-  // turn-offs
-  [["1820",d.p["1820"],1],["1930",d.p["1930"],-1]].forEach(([id,dist,dir])=>{
-    const x=HEMPEL-dist, y1=dir>0?yT:yB, y2=y1-dir*34;
-    el("line",{x1:x,y1,x2:x,y2,stroke:cv(HH.find(h=>h.id===id).c),"stroke-width":7,"stroke-linecap":"round"},g);
-    const t=el("text",{x:x+8,y:dir>0?y2+10:y2-2,class:"tick"},g);t.textContent=dist+" ft";
-  });
-  // west end markers
-  const xe=HEMPEL-d.end;
-  [["1830",1],["1922",-1]].forEach(([id,dir])=>{const y1=dir>0?yT:yB;el("line",{x1:xe,y1,x2:xe-18,y2:y1-dir*28,stroke:cv(HH.find(h=>h.id===id).c),"stroke-width":7,"stroke-linecap":"round"},g);});
-  const t=el("text",{x:xe+6,y:yB+16,class:"tick"},g);t.textContent=d.end+" ft";
-}
 function compute(){
   const p={"1930":101,"1820":242,"1830":335,"1922":335}, end=335;
   const bps=[0,101,242,335];
@@ -575,13 +514,10 @@ function render(){
     return `<tr><td><span class="dot" style="background:var(${h.c})"></span>${h.addr}<div class="bar"><i style="width:${pct*100}%;background:var(${h.c})"></i></div></td><td class="num"><span class="pct">${(pct*100).toFixed(1)}%</span></td><td class="num">${money(total*pct)}</td></tr>`}).join("");
   document.getElementById("shareFoot").innerHTML=`<tr><td>Total</td><td class="num">100%</td><td class="num">${money(total)}</td></tr>`;
   document.getElementById("segs").innerHTML=d.segs.map(s=>`<span>${s.a} to ${s.b} ft from Hempel (${s.b-s.a} ft): split ${s.users.length} ways among ${s.users.join(", ")}</span>`).join("");
-  drawRoad(d);
 }
-drawBase();
 ["rate","fixed","aShared"].forEach(id=>{const e=document.getElementById(id);e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US");});});
-try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawBase();render();});new MutationObserver(()=>{drawBase();render();}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});}catch(e){}
 render();
-// on narrow screens the maps scroll sideways: start at the Hempel Ave end and say so
+// on narrow screens the road map scrolls sideways: start at the Hempel Ave end and say so
 const scrollers=[...document.querySelectorAll(".plan-scroll")];
 function fitMaps(){scrollers.forEach(s=>{const over=s.scrollWidth>s.clientWidth+1;s.closest(".plan").classList.toggle("scrolls",over);});}
 scrollers.forEach(s=>{s.scrollLeft=s.scrollWidth;});
