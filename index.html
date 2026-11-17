@@ -89,6 +89,10 @@ header{display:grid;gap:16px}
 .bid .price.none{font-size:1.3rem;color:var(--muted)}
 .bid .contact{display:grid;gap:4px;font-size:.95rem;border-top:1px solid var(--line);padding-top:10px;margin-top:4px}
 .bid .contact a{color:var(--oak);text-underline-offset:2px;overflow-wrap:anywhere}
+.bid .meta{font-size:.88rem;color:var(--muted)}
+.bid .scope{margin:2px 0 0;padding-left:18px;font-size:.92rem;display:grid;gap:4px}
+.bid .doc{justify-self:start}
+.controls .field{max-width:340px}
 .shot{position:relative;border-radius:6px;overflow:hidden;background:var(--line)}
 .shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 
@@ -121,10 +125,10 @@ header{display:grid;gap:16px}
 .deed h3{font-size:1.35rem}
 .deed blockquote{margin:0;padding:12px 14px;background:var(--ground);border-left:3px solid var(--c);border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.8rem;line-height:1.6;overflow-wrap:anywhere}
 .deed .cite{font-size:.85rem;color:var(--muted);margin-top:auto}
-.deed .doc{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--oak);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px}
-.deed .doc:hover{border-color:var(--oak)}
-.deed .doc:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
-.deed .doc svg{width:16px;height:16px;flex:none}
+.deed .doc,.bid .doc{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--oak);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.deed .doc:hover,.bid .doc:hover{border-color:var(--oak)}
+.deed .doc:focus-visible,.bid .doc:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
+.deed .doc svg,.bid .doc svg{width:16px;height:16px;flex:none}
 
 /* why + split */
 .why{display:grid;gap:18px}
@@ -159,7 +163,6 @@ header{display:grid;gap:16px}
 .note{font-size:.88rem;color:var(--muted)}
 .note a,figcaption a,.split-head a{color:var(--oak);text-underline-offset:2px}
 .controls h3{margin-bottom:-4px}
-.fields2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
 .table-wrap{display:grid;gap:14px;min-width:0}
 .tscroll{overflow-x:auto}
 .shares{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
@@ -179,7 +182,7 @@ header{display:grid;gap:16px}
 .steps li::before{content:"Step " counter(s);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;color:var(--oak)}
 .steps li p{color:var(--muted)}
 footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:18px}
-@media (max-width:480px){.fields2{grid-template-columns:1fr}.wrap{padding-block:28px 48px;gap:44px}
+@media (max-width:480px){.wrap{padding-block:28px 48px;gap:44px}
   .cmp .tag,.mark{font-size:.72rem;line-height:1.3;padding:3px 7px}.cmp .tag{bottom:8px}.cmp .tag.l{left:8px}.cmp .tag.r{right:8px}}
 @media (prefers-reduced-motion:reduce){.cmp .tag{transition:none}}
 </style>
@@ -194,7 +197,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <span><i class="sw dirt"></i>Left of the slider: the road today</span>
       <span><i class="sw conc"></i>Right of the slider: concrete</span>
     </div>
-    <p class="notice"><b>No quotes yet.</b> The costs on this page are rough estimates to help us decide whether to do this. If everyone is interested, we'll get three quotes from concrete contractors.</p>
+    <p class="notice"><b>First quote is in.</b> Cultivate Construction quoted $49,998.50 for the whole shared road, and the cost split below now uses it. We'll get two more quotes for the same job to compare.</p>
   </header>
 
   <section class="road" aria-labelledby="hempel-h">
@@ -372,20 +375,28 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div class="split-head">
       <div class="eyebrow">Bids</div>
       <h2 id="quotes-h">Contractors so far</h2>
-      <p class="muted">Contractors we've talked to so far. None has quoted the shared road yet. If everyone is interested, we'll ask each for a quote on the same job: the full 335 ft shared road, about 4,200 sq ft of 4 in. fiber-reinforced concrete. Their quotes will then replace the rough estimate in the cost split below.</p>
+      <p class="muted">Contractors we've talked to so far. Cultivate Construction has quoted the shared road, and the cost split below uses that quote. We'll ask the others to price the same job so the numbers compare: 5,052 sq ft of 4 in. concrete, including the wide section and the apron at Hempel.</p>
     </div>
     <div class="bids">
+      <article class="bid">
+        <h3>Cultivate Construction</h3>
+        <p class="who">Blake</p>
+        <p class="price">$49,998.50</p>
+        <p class="meta">Estimate #2450, Nov. 17, 2026. About $9.90 per sq ft.</p>
+        <ul class="scope">
+          <li>5,052 sq ft: the 300 × 12 ft road, a 38 × 24 ft wide section and a 20 × 27 ft apron</li>
+          <li>4 in. broom-finished concrete with welded wire mesh and saw-cut joints</li>
+          <li>Removes gravel where needed to reach grade and reuses the rest as the base</li>
+        </ul>
+        <p class="meta">The price assumes most of the existing gravel can be reused as the base.</p>
+        <a class="doc" href="quotes/cultivate-estimate-2450.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the estimate (PDF)</a>
+        <div class="contact"><a href="tel:+14078089586">407-808-9586</a><a href="https://www.cultivateconst.com/" target="_blank" rel="noopener">cultivateconst.com</a></div>
+      </article>
       <article class="bid">
         <h3>T&amp;M Concrete</h3>
         <p class="who">Tim McCreless</p>
         <p class="price none">No quote yet</p>
         <div class="contact"><a href="tel:+14072769641">407-276-9641</a></div>
-      </article>
-      <article class="bid">
-        <h3>Cultivate Construction</h3>
-        <p class="who">Blake</p>
-        <p class="price none">No quote yet</p>
-        <div class="contact"><a href="tel:+14078089586">407-808-9586</a><a href="https://www.cultivateconst.com/" target="_blank" rel="noopener">cultivateconst.com</a></div>
       </article>
       <article class="bid">
         <h3>Peter Williams Construction Services</h3>
@@ -410,15 +421,10 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
 
     <div class="split-grid">
       <div class="controls">
-        <h3>Rough cost estimate</h3>
-        <div class="fields2">
-          <div class="field"><label for="rate">Concrete, per sq ft ($)</label><input id="rate" inputmode="decimal" value="11" autocomplete="off"></div>
-          <div class="field"><label for="fixed">Fixed job costs ($)</label><input id="fixed" inputmode="numeric" value="4,000" autocomplete="off"></div>
-          <div class="field"><label for="aShared">Shared road (sq ft)</label><input id="aShared" inputmode="numeric" value="4,200" autocomplete="off"></div>
-        </div>
-        <p class="note"><b>These are rough estimates, not quotes.</b> Real prices will come from three contractor quotes if everyone is interested. $11 per sq ft is the middle of the $10 to $13 Orlando range for 4 inch, fiber reinforced, broom finish concrete. Fixed costs cover things that are paid once per job: mobilization, permit, equipment and a pump truck if needed.</p>
-        <p class="note">Shared road: 335 ft long by about 12 ft wide, plus the apron at Hempel.</p>
-        <p class="note">The whole cost, fixed costs included, is split by the stretches listed under the table. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
+        <h3>Cost to split</h3>
+        <div class="field"><label for="total">Total job cost ($)</label><input id="total" inputmode="decimal" value="49,998.50" autocomplete="off"></div>
+        <p class="note"><b>From Cultivate Construction's quote</b> (estimate #2450, Nov. 17, 2026): 5,052 sq ft of 4 in. concrete, including the wide section and the apron at Hempel. Type in a different total to try another quote.</p>
+        <p class="note">The whole cost is split by the stretches listed under the table. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
       </div>
       <div class="table-wrap">
         <div class="tscroll"><table class="shares">
@@ -509,16 +515,15 @@ function compute(){
 }
 const and=a=>a.length<3?a.join(" and "):a.slice(0,-1).join(", ")+" and "+a[a.length-1];
 const num=id=>parseFloat(document.getElementById(id).value.replace(/[^0-9.]/g,""))||0;
-const money=v=>"$"+Math.round(v).toLocaleString("en-US");
+const money=(v,cents)=>"$"+(cents?v.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}):Math.round(v).toLocaleString("en-US"));
 function render(){
-  const d=compute(),rate=num("rate"),F=num("fixed"),As=num("aShared");
-  const total=As*rate+F;
+  const d=compute(),total=num("total");
   document.getElementById("shareRows").innerHTML=HH.map(h=>{const pct=d.feet[h.id]/d.end;
     return `<tr><td><span class="dot" style="background:var(${h.c})"></span>${h.addr}<div class="bar"><i style="width:${pct*100}%;background:var(${h.c})"></i></div></td><td class="num"><span class="pct">${(pct*100).toFixed(1)}%</span></td><td class="num">${money(total*pct)}</td></tr>`}).join("");
-  document.getElementById("shareFoot").innerHTML=`<tr><td>Total</td><td class="num">100%</td><td class="num">${money(total)}</td></tr>`;
+  document.getElementById("shareFoot").innerHTML=`<tr><td>Total</td><td class="num">100%</td><td class="num">${money(total,total%1!==0)}</td></tr>`;
   document.getElementById("segs").innerHTML=d.segs.map(s=>`<span>${s.a} to ${s.b} ft from Hempel (${s.b-s.a} ft${s.what?", "+s.what:""}): split ${s.users.length===2?"between":s.users.length+" ways among"} ${and(s.users)}</span>`).join("");
 }
-["rate","fixed","aShared"].forEach(id=>{const e=document.getElementById(id);e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US");});});
+{const e=document.getElementById("total");e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US",{minimumFractionDigits:t%1?2:0,maximumFractionDigits:2});});}
 render();
 // on narrow screens the road map scrolls sideways: start at the Hempel Ave end and say so
 const scrollers=[...document.querySelectorAll(".plan-scroll")];
