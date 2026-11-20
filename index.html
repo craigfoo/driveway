@@ -93,6 +93,32 @@ header{display:grid;gap:16px}
 .bid .scope{margin:2px 0 0;padding-left:18px;font-size:.92rem;display:grid;gap:4px}
 .bid .doc{justify-self:start}
 .controls .field{max-width:340px}
+.bid .meta a{color:var(--oak);text-underline-offset:2px}
+
+/* the cheaper option: surface switch, slider grid, prices */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;justify-self:start;margin:0;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.seg legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.seg label{position:relative;display:block}
+.seg input{position:absolute;inset:0;margin:0;opacity:0;cursor:pointer}
+.seg span{display:block;padding:8px 16px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--muted)}
+.seg input:checked+span{background:var(--oak);color:var(--oak-ink)}
+.seg input:focus-visible+span{outline:2px solid var(--oak);outline-offset:2px}
+.gviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px 20px}
+.gviews .view{gap:10px}
+.gviews h3{font-size:1.2rem}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
+.price-card{display:grid;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.price-card .name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.9rem;color:var(--muted)}
+.price-card .amt{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1.05;font-variant-numeric:tabular-nums}
+.price-card .per{font-size:.88rem;color:var(--muted)}
+.price-card.ref{background:transparent;border-style:dashed}
+.gtable th.num{white-space:normal}
+@media (max-width:520px){.shares.gtable td,.shares.gtable th{padding-inline:4px}.shares.gtable th{font-size:.72rem;letter-spacing:.05em}.shares.gtable td{font-size:.9rem}.shares.gtable .dot{margin-right:5px}.gtable .st{display:none}.shares.gtable :is(td,th):first-child{padding-left:0}.shares.gtable :is(td,th):last-child{padding-right:0}}
+.presets{display:flex;flex-wrap:wrap;gap:8px}
+.presets button{display:grid;gap:2px;text-align:left;font:600 .92rem var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+.presets button span{font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.presets button[aria-pressed="true"]{border-color:var(--oak);box-shadow:inset 0 0 0 1px var(--oak)}
+.presets button:focus-visible{outline:2px solid var(--oak);outline-offset:2px}
 .shot{position:relative;border-radius:6px;overflow:hidden;background:var(--line)}
 .shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 
@@ -197,7 +223,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
       <span><i class="sw dirt"></i>Left of the slider: the road today</span>
       <span><i class="sw conc"></i>Right of the slider: concrete</span>
     </div>
-    <p class="notice"><b>First quote is in.</b> Cultivate Construction quoted $49,998.50 for the whole shared road, and the cost split below now uses it. We'll get two more quotes for the same job to compare.</p>
+    <p class="notice"><b>Quotes so far.</b> Cultivate Construction quoted $49,998.50 for concrete, or about half that for a compacted gravel surface: $23,720 in asphalt millings or $26,220 in crushed concrete. We'll get more quotes for the same job to compare.</p>
   </header>
 
   <section class="road" aria-labelledby="hempel-h">
@@ -274,6 +300,48 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
         <div class="shot" data-dim="561 1038 665" data-dim-label="20 ft wide"><img src="img/wide-section-top.jpg" alt="Overhead view of the wide section with a pickup truck and an SUV side by side" loading="lazy"></div>
         <p class="cap">The same idea from above, with a pickup and an SUV side by side.</p>
       </article>
+    </div>
+  </section>
+
+  <section class="road gravel" id="gravel" aria-labelledby="gravel-h">
+    <div class="split-head">
+      <div class="eyebrow">A cheaper option</div>
+      <h2 id="gravel-h">Asphalt millings or crushed concrete</h2>
+      <p class="muted">Cultivate Construction also priced a compacted gravel surface for the same 5,052 sq ft. They would haul off extra gravel where needed to reach grade, compact the rest as the base, then spread and roll 4 in. of asphalt millings or crushed concrete on top. Either one costs about half as much as concrete.</p>
+    </div>
+    <fieldset class="seg">
+      <legend>Surface to show</legend>
+      <label><input type="radio" name="surf" value="millings" checked><span>Asphalt millings</span></label>
+      <label><input type="radio" name="surf" value="crushed"><span>Crushed concrete</span></label>
+    </fieldset>
+    <div class="gviews">
+      <article class="view"><h3>Street entrance</h3><div data-view="street" data-surface="millings" data-title="Street entrance"></div></article>
+      <article class="view"><h3>Interior road</h3><div data-view="interior" data-surface="millings" data-title="Interior road"></div></article>
+      <article class="view"><h3>Where 1930 turns off</h3><div data-view="1930-driveway" data-surface="millings" data-title="The 1930 turn-off"></div></article>
+      <article class="view"><h3>Where 1820 turns off</h3><div data-view="side" data-surface="millings" data-title="The 1820 turn-off"></div></article>
+      <article class="view"><h3>Where 1922 and 1830 split</h3><div data-view="gate" data-surface="millings" data-title="The 1922 and 1830 split"></div></article>
+      <article class="view"><h3>The whole stretch</h3><div data-view="long-road" data-surface="millings" data-title="The whole stretch"></div></article>
+    </div>
+    <p class="hint">Renderings made from the same photos as the concrete versions. Real millings and crushed concrete look rougher up close.</p>
+
+    <div class="prices">
+      <div class="price-card"><span class="name">Asphalt millings</span><span class="amt">$23,720</span><span class="per">About $4.70 per sq ft</span></div>
+      <div class="price-card"><span class="name">Crushed concrete</span><span class="amt">$26,220</span><span class="per">About $5.19 per sq ft</span></div>
+      <div class="price-card ref"><span class="name">Concrete, for comparison</span><span class="amt">$49,998.50</span><span class="per">About $9.90 per sq ft</span></div>
+    </div>
+    <div class="tscroll"><table class="shares gtable">
+      <thead><tr><th>Household</th><th class="num">Millings</th><th class="num">Crushed concrete</th><th class="num">Concrete</th></tr></thead>
+      <tbody id="gRows"></tbody>
+      <tfoot id="gFoot"></tfoot>
+    </table></div>
+    <p class="note">Each household's share is the same as in the <a href="#split-h">cost split</a> below. Prices are from Cultivate Construction's estimate of Nov. 20, 2026, which lists crushed concrete as “concrete fines” and assumes most of the existing gravel can be reused as the base. <a href="quotes/cultivate-gravel-estimate.pdf" target="_blank" rel="noopener">View the estimate (PDF)</a></p>
+
+    <div class="rules">
+      <div class="rule"><h3>About half the price</h3><p>Millings save about $26,000 over concrete and crushed concrete about $24,000, split the same way.</p></div>
+      <div class="rule"><h3>Not a sealed surface</h3><p>Expect some loose stone, dust in dry spells and ruts where cars turn off. It won't feel like the concrete in the photos above.</p></div>
+      <div class="rule"><h3>Needs topping up</h3><p>Plan on regrading and adding material every few years, a cost the households would share again.</p></div>
+      <div class="rule"><h3>Millings or crushed concrete</h3><p>Millings are dark and pack harder as summer heat softens the old asphalt in them. Crushed concrete stays lighter and cooler but tends to be dustier.</p></div>
+      <div class="rule"><h3>Soft edges</h3><p>Without a border, the edges spread into the grass and need raking back now and then.</p></div>
     </div>
   </section>
 
@@ -375,7 +443,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div class="split-head">
       <div class="eyebrow">Bids</div>
       <h2 id="quotes-h">Contractors so far</h2>
-      <p class="muted">Contractors we've talked to so far. Cultivate Construction has quoted the shared road, and the cost split below uses that quote. We'll ask the others to price the same job so the numbers compare: 5,052 sq ft of 4 in. concrete, including the wide section and the apron at Hempel.</p>
+      <p class="muted">Contractors we've talked to so far. Cultivate Construction has quoted the shared road in concrete and in two gravel surfaces, and the cost split below can use any of them. We'll ask the others to price the same job so the numbers compare: 5,052 sq ft, including the wide section and the apron at Hempel.</p>
     </div>
     <div class="bids">
       <article class="bid">
@@ -390,6 +458,8 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
         </ul>
         <p class="meta">The price assumes most of the existing gravel can be reused as the base.</p>
         <a class="doc" href="quotes/cultivate-estimate-2450.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the estimate (PDF)</a>
+        <p class="meta"><b>Also quoted a gravel surface</b> (Nov. 20, 2026): $23,720 in asphalt millings or $26,220 in crushed concrete. <a href="#gravel">See the cheaper option</a></p>
+        <a class="doc" href="quotes/cultivate-gravel-estimate.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>View the gravel estimate (PDF)</a>
         <div class="contact"><a href="tel:+14078089586">407-808-9586</a><a href="https://www.cultivateconst.com/" target="_blank" rel="noopener">cultivateconst.com</a></div>
       </article>
       <article class="bid">
@@ -422,8 +492,13 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     <div class="split-grid">
       <div class="controls">
         <h3>Cost to split</h3>
+        <div class="presets" role="group" aria-label="Use a quote">
+          <button type="button" data-total="49998.5" aria-pressed="true">Concrete<span>$49,998.50</span></button>
+          <button type="button" data-total="23720" aria-pressed="false">Asphalt millings<span>$23,720</span></button>
+          <button type="button" data-total="26220" aria-pressed="false">Crushed concrete<span>$26,220</span></button>
+        </div>
         <div class="field"><label for="total">Total job cost ($)</label><input id="total" inputmode="decimal" value="49,998.50" autocomplete="off"></div>
-        <p class="note"><b>From Cultivate Construction's quote</b> (estimate #2450, Nov. 17, 2026): 5,052 sq ft of 4 in. concrete, including the wide section and the apron at Hempel. Type in a different total to try another quote.</p>
+        <p class="note"><b>From Cultivate Construction's quotes</b> for the same 5,052 sq ft, including the wide section and the apron at Hempel: concrete (estimate #2450, Nov. 17, 2026) or a compacted gravel surface (Nov. 20, 2026). Pick one, or type in a different total to try another quote.</p>
         <p class="note">The whole cost is split by the stretches listed under the table. Distances are scaled from the recorded survey of 1830 Hempel and match a Google Maps measurement within a few inches.</p>
       </div>
       <div class="table-wrap">
@@ -468,7 +543,7 @@ footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padd
     </ol>
   </section>
 
-  <footer>The concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Ownership and easement details come from documents recorded in the Orange County Official Records. The road diagram is not a survey.</footer>
+  <footer>The concrete, millings and crushed concrete versions are digital renderings made from photos of our road. Final layout, width, and finish will follow the contractor's plan. Ownership and easement details come from documents recorded in the Orange County Official Records. The road diagram is not a survey.</footer>
 </div>
 
 <script>
@@ -481,14 +556,17 @@ function dimHTML(d,label){
   return `<svg class="dim" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="sh">${lines}</g><g class="ln">${lines}</g></svg>
     <span class="mark" style="left:${(x1+x2)/32}%;top:max(${y/9}%,calc(50% + 21px))">${label}</span>`;
 }
-function cmpHTML(beforeSrc,afterSrc,title,dim,dimLabel){
+// the surfaces a slider can show on its right side
+const SURF={concrete:{tag:"Concrete",desc:"a concrete driveway"},millings:{tag:"Millings",desc:"an asphalt millings surface"},crushed:{tag:"Crushed concrete",desc:"a crushed concrete surface"}};
+function cmpHTML(beforeSrc,afterSrc,title,dim,dimLabel,surf="concrete"){
+  const s=SURF[surf];
   return `<div class="cmp" style="--pos:50%">
-    <img class="after" src="${afterSrc}" alt="${title} as a concrete driveway" loading="lazy">
+    <img class="after" src="${afterSrc}" alt="${title} as ${s.desc}" loading="lazy">
     <img class="before" src="${beforeSrc}" alt="${title} as it is today" loading="lazy">
     ${dim?dimHTML(dim,dimLabel):""}
     <div class="divider"></div><div class="knob">${knob}</div>
-    <span class="tag l">Today</span><span class="tag r">Concrete</span>
-    <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Compare ${title} today and with concrete">
+    <span class="tag l">Today</span><span class="tag r">${s.tag}</span>
+    <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Compare ${title} today and as ${s.desc}">
   </div>`;
 }
 function wire(cmp){
@@ -497,10 +575,20 @@ function wire(cmp){
   r.addEventListener("input",()=>set(r.value));
 }
 document.querySelectorAll("[data-view]").forEach(el=>{
-  const v=el.dataset.view;
-  el.innerHTML=cmpHTML(`img/${v}-before.jpg`,`img/${v}-after.jpg`,el.dataset.title,el.dataset.dim,el.dataset.dimLabel);
+  const v=el.dataset.view,s=el.dataset.surface;
+  el.innerHTML=cmpHTML(`img/${v}-before.jpg`,s?`img/${v}-${s}.jpg`:`img/${v}-after.jpg`,el.dataset.title,el.dataset.dim,el.dataset.dimLabel,s||"concrete");
   wire(el.querySelector(".cmp"));
 });
+// the cheaper-option sliders switch between millings and crushed concrete
+document.querySelectorAll('input[name="surf"]').forEach(r=>r.addEventListener("change",()=>{
+  if(!r.checked)return;const s=r.value;
+  document.querySelectorAll("#gravel [data-view]").forEach(el=>{
+    const v=el.dataset.view,cmp=el.querySelector(".cmp"),img=cmp.querySelector("img.after");
+    el.dataset.surface=s;img.src=`img/${v}-${s}.jpg`;img.alt=`${el.dataset.title} as ${SURF[s].desc}`;
+    cmp.querySelector(".tag.r").textContent=SURF[s].tag;
+    cmp.querySelector("input").setAttribute("aria-label",`Compare ${el.dataset.title} today and as ${SURF[s].desc}`);
+  });
+}));
 document.querySelectorAll(".shot[data-dim]").forEach(el=>el.insertAdjacentHTML("beforeend",dimHTML(el.dataset.dim,el.dataset.dimLabel)));
 const HH=[{id:"1830",addr:"1830 Hempel",c:"--h1830"},{id:"1922",addr:"1922 Hempel",c:"--h1922"},{id:"1820",addr:"1820 Hempel",c:"--h1820"},{id:"1930",addr:"1930 Hempel",c:"--h1930"}];
 // All four split the first 200 ft (the 1981 easement); 1830 and 1922 split the rest.
@@ -522,9 +610,20 @@ function render(){
     return `<tr><td><span class="dot" style="background:var(${h.c})"></span>${h.addr}<div class="bar"><i style="width:${pct*100}%;background:var(${h.c})"></i></div></td><td class="num"><span class="pct">${(pct*100).toFixed(1)}%</span></td><td class="num">${money(total*pct)}</td></tr>`}).join("");
   document.getElementById("shareFoot").innerHTML=`<tr><td>Total</td><td class="num">100%</td><td class="num">${money(total,total%1!==0)}</td></tr>`;
   document.getElementById("segs").innerHTML=d.segs.map(s=>`<span>${s.a} to ${s.b} ft from Hempel (${s.b-s.a} ft${s.what?", "+s.what:""}): split ${s.users.length===2?"between":s.users.length+" ways among"} ${and(s.users)}</span>`).join("");
+  document.querySelectorAll(".presets button").forEach(b=>b.setAttribute("aria-pressed",String(Math.abs(+b.dataset.total-total)<0.005)));
 }
-{const e=document.getElementById("total");e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=t.toLocaleString("en-US",{minimumFractionDigits:t%1?2:0,maximumFractionDigits:2});});}
-render();
+// the quotes so far, also listed side by side in the cheaper-option section
+const QUOTES=[{id:"millings",total:23720},{id:"crushed",total:26220},{id:"concrete",total:49998.5}];
+function renderQuotes(){
+  const d=compute();
+  document.getElementById("gRows").innerHTML=HH.map(h=>{const pct=d.feet[h.id]/d.end;
+    return `<tr><td><span class="dot" style="background:var(${h.c})"></span>${h.id}<span class="st"> Hempel</span></td>${QUOTES.map(q=>`<td class="num">${money(q.total*pct)}</td>`).join("")}</tr>`}).join("");
+  document.getElementById("gFoot").innerHTML=`<tr><td>Total</td>${QUOTES.map(q=>`<td class="num">${money(q.total,q.total%1!==0)}</td>`).join("")}</tr>`;
+}
+const fmtTotal=t=>t.toLocaleString("en-US",{minimumFractionDigits:t%1?2:0,maximumFractionDigits:2});
+{const e=document.getElementById("total");e.addEventListener("input",render);e.addEventListener("blur",()=>{const t=parseFloat(e.value.replace(/[^0-9.]/g,""));if(!isNaN(t))e.value=fmtTotal(t);});
+ document.querySelectorAll(".presets button").forEach(b=>b.addEventListener("click",()=>{e.value=fmtTotal(+b.dataset.total);render();}));}
+render();renderQuotes();
 // on narrow screens the road map scrolls sideways: start at the Hempel Ave end and say so
 const scrollers=[...document.querySelectorAll(".plan-scroll")];
 function fitMaps(){scrollers.forEach(s=>{const over=s.scrollWidth>s.clientWidth+1;s.closest(".plan").classList.toggle("scrolls",over);});}
